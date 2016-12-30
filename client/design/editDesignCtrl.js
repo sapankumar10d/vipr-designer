@@ -4,7 +4,6 @@
 
 angular.module('viprApp')
     .controller("editDesignCtrl", function($scope, $stateParams, dataService, $window) {
-        //console.log($stateParams.designId);
         dataService.getDesign($stateParams.designId).then(function(doc) {
             $scope.design = doc.data;
         }, function(response) {

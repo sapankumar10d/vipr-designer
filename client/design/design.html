@@ -1,7 +1,7 @@
 <div class = "row">
     <div class="col-md-6">
         <h2>
-            {{ design.customer.accnt }} {{ design.createDate| date:'yyyy-MM-dd'}}
+            {{ design.customer.accnt }}, Started: {{ design.createDate| date:'dd-MMM-yyyy'}}
         </h2>
     </div>
     <div class="col-md-3">
@@ -13,7 +13,7 @@
 </div>
 <div ng-hide="editMode" class="container" id="exportThis">
     <div class="container" style="width: 100%">
-        <div style="float:left; width: 48%">
+        <div style="float:left; width: 48%" class="well">
             <legend>Dell EMC Details</legend>
 
             <p ng-if="design.dellEmc.saName"><label>SA Name:</label> {{ design.dellEmc.saName }}</p>
@@ -22,9 +22,10 @@
             <p ng-if="design.dellEmc.pmName"><label>PM Name:</label> {{ design.dellEmc.pmName }}</p>
             <p ng-if="design.dellEmc.pmEmail"><label>PM Email:</label> <a ng-href="mailto:{{ design.dellEmc.pmEmail }}" target="_blank">{{ design.dellEmc.pmEmail }} </a></p>
             <p ng-if="design.dellEmc.pmContact"><label>PM Contact:</label> {{ design.dellEmc.pmContact }} </p>
+            <p ng-if="design.dellEmc.address"><label>Dell EMC Address:</label> {{ design.dellEmc.address }} </p>
 
         </div>
-        <div style="float:right; width: 48%">
+        <div style="float:right; width: 48%" class="well">
             <legend>Customer Details</legend>
 
             <p ng-if="design.customer.accnt"><label> Name:</label> {{ design.customer.accnt }}</p>
@@ -38,22 +39,291 @@
 
         <div style="clear:both"></div>
 
-        <div>
-            <legend>Define your VDC</legend>
-            <p ng-if="design.numberOfVdc"><label> Number of VDC:</label> {{ design.numberOfVdc }}</p>
-            <p ng-if="design.isGeoFederation"><label> Geo Federation Deployment:</label> {{ design.isGeoFederation }}</p>
-            <p ng-if="design.viprHa"><label> ViPR High Availability:</label> {{ design.viprHa }}</p>
-            <p ng-if="design.vsphereVersion"><label> vSphere/Hyper-V Version:</label> {{ design.vsphereVersion }}</p>
-            <p ng-if="design.blockorFile"><label> Block, file or both?:</label> {{ design.blockorFile }}</p>
-
+        <div class="well">
+            <legend>VDC Summary</legend>
+            <table class="table table-condensed table-striped table-responsive table-bordered">
+                <thead>
+                <tr>
+                    <th>Number of VDC</th>
+                    <th>Geo Federation Deployment</th>
+                    <th>ViPR High Availability</th>
+                    <th>vSphere/Hyper-V Version</th>
+                    <th>Block, file or both?</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ design.numberOfVdc }}</td>
+                    <td>{{ design.isGeoFederation }}</td>
+                    <td>{{ design.viprHa }}</td>
+                    <td>{{ design.vsphereVersion }}</td>
+                    <td>{{ design.blockorFile }}</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
 
-        <div>
-            <legend>VDC Details</legend>
-            <p ng-if="design.isVmax2"><label> VMAX-2 SMIS:</label> {{design.vmax2Smis}}</p>
+        <div class="well">
+            <legend>ViPR Infrastructure and Network Details</legend>
+            <table class="table table-condensed table-striped table-responsive table-bordered">
+                <thead>
+                <tr>
+                    <th>Node Type</th>
+                    <th>Hostname</th>
+                    <th>IP Address</th>
+                    <th>Netmask</th>
+                    <th>Gateway</th>
+                    <th>DNS Servers</th>
+                    <th>NTP servers</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Public Virtual</td>
+                    <td>{{design.virtual.host}}</td>
+                    <td>{{design.virtual.ip}}</td>
+                    <td>{{design.network.mask}}</td>
+                    <td>{{design.network.gateway}}</td>
+                    <td>{{design.network.dns1}}</td>
+                    <td>{{design.network.ntp1}}</td>
 
+                </tr>
+                <tr>
+                    <td>Node 1</td>
+                    <td>{{design.node1.host}}</td>
+                    <td>{{design.node1.ip}}</td>
+                    <td>{{design.network.mask}}</td>
+                    <td>{{design.network.gateway}}</td>
+                    <td>{{design.network.dns2}}</td>
+                    <td>{{design.network.ntp2}}</td>
+                </tr>
+                <tr>
+                    <td>Node 2</td>
+                    <td>{{design.node2.host}}</td>
+                    <td>{{design.node2.ip}}</td>
+                    <td>{{design.network.mask}}</td>
+                    <td>{{design.network.gateway}}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>Node 3</td>
+                    <td>{{design.node3.host}}</td>
+                    <td>{{design.node3.ip}}</td>
+                    <td>{{design.network.mask}}</td>
+                    <td>{{design.network.gateway}}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr ng-if="design.viprHa =='3plus2'">
+                    <td>Node 4</td>
+                    <td>{{design.node4.host}}</td>
+                    <td>{{design.node4.ip}}</td>
+                    <td>{{design.network.mask}}</td>
+                    <td>{{design.network.gateway}}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr ng-if="design.viprHa =='3plus2'">
+                    <td>Node 5</td>
+                    <td>{{design.node5.host}}</td>
+                    <td>{{design.node5.ip}}</td>
+                    <td>{{design.network.mask}}</td>
+                    <td>{{design.network.gateway}}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="well">
+            <legend>Storage Infrastructure Details</legend>
+            <table class="table table-condensed table-striped table-responsive table-bordered">
+                <thead>
+                <tr>
+                    <th>Storage Type</th>
+                    <th>ViPR Name</th>
+                    <th>Hostname</th>
+                    <th>IP Address</th>
+                    <th>UserID</th>
+                    <th>Port</th>
+                    <th>Version</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-if="design.isVmax-2">
+                    <td>VMAX-2</td>
+                    <td>{{design.vmax2Smis.viprName}}</td>
+                    <td>{{design.vmax2Smis.host}}</td>
+                    <td>{{design.vmax2Smis.ip}}</td>
+                    <td>{{design.vmax2Smis.user}}</td>
+                    <td>{{design.vmax2Smis.port}}</td>
+                    <td>{{design.vmax2Smis.version}}</td>
+                </tr>
+
+                <tr ng-if="design.isVmax-3">
+                    <td>VMAX-3</td>
+                    <td>{{design.vmax3Smis.viprName}}</td>
+                    <td>{{design.vmax3Smis.host}}</td>
+                    <td>{{design.vmax3Smis.ip}}</td>
+                    <td>{{design.vmax3Smis.user}}</td>
+                    <td>{{design.vmax3Smis.port}}</td>
+                    <td>{{design.vmax3Smis.version}}</td>
+                </tr>
+
+                <tr ng-if="design.isVnxBlock">
+                    <td>VNX-Block</td>
+                    <td>{{design.vnxBlock.viprName}}</td>
+                    <td>{{design.vnxBlock.host}}</td>
+                    <td>{{design.vnxBlock.ip}}</td>
+                    <td>{{design.vnxBlock.user}}</td>
+                    <td>{{design.vnxBlock.port}}</td>
+                    <td>{{design.vnxBlock.version}}</td>
+                </tr>
+
+                <tr ng-if="design.isVplex">
+                    <td>VPLEX</td>
+                    <td>{{design.vplex.viprName}}</td>
+                    <td>{{design.vplex.host}}</td>
+                    <td>{{design.vplex.ip}}</td>
+                    <td>{{design.vplex.user}}</td>
+                    <td>{{design.vplex.port}}</td>
+                    <td>{{design.vplex.version}}</td>
+                </tr>
+
+                <tr ng-if="design.isRp">
+                    <td>Recover Point</td>
+                    <td>{{design.rp.viprName}}</td>
+                    <td>{{design.rp.host}}</td>
+                    <td>{{design.rp.ip}}</td>
+                    <td>{{design.rp.user}}</td>
+                    <td>{{design.rp.port}}</td>
+                    <td>{{design.rp.version}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="well">
+            <legend>SAN Fabric Details</legend>
+            <table class="table table-condensed table-striped table-responsive table-bordered">
+                <thead>
+                <tr>
+                    <th>Fabric Type</th>
+                    <th>ViPR Name</th>
+                    <th>Hostname</th>
+                    <th>IP Address</th>
+                    <th>UserID</th>
+                    <th>Port</th>
+                    <th>Version</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-if="design.isCisco">
+                    <td>Cisco</td>
+                    <td>{{design.cisco.viprName}}</td>
+                    <td>{{design.cisco.host}}</td>
+                    <td>{{design.cisco.ip}}</td>
+                    <td>{{design.cisco.user}}</td>
+                    <td>{{design.cisco.port}}</td>
+                    <td>{{design.cisco.version}}</td>
+                </tr>
+
+                <tr ng-if="design.isBrocade">
+                    <td>Brocade</td>
+                    <td>{{design.brocade.viprName}}</td>
+                    <td>{{design.brocade.host}}</td>
+                    <td>{{design.brocade.ip}}</td>
+                    <td>{{design.brocade.user}}</td>
+                    <td>{{design.brocade.port}}</td>
+                    <td>{{design.brocade.version}}</td>
+                </tr>
+                </tbody>
+            </table>
 
         </div>
+        <div class="well">
+            <legend>Hosts/Clusters Details</legend>
+            <table class="table table-condensed table-striped table-responsive table-bordered">
+                <thead>
+                <tr>
+                    <th>Host Type</th>
+                    <th>ViPR Name</th>
+                    <th>Hostname</th>
+                    <th>IP Address</th>
+                    <th>UserID</th>
+                    <th>Port</th>
+                    <th>Version</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-if="design.isVcenter">
+                    <td>vCenter</td>
+                    <td>{{design.vcenter.viprName}}</td>
+                    <td>{{design.vcenter.host}}</td>
+                    <td>{{design.vcenter.ip}}</td>
+                    <td>{{design.vcenter.user}}</td>
+                    <td>{{design.vcenter.port}}</td>
+                    <td>{{design.vcenter.version}}</td>
+                </tr>
+
+                <tr ng-if="design.isWindows">
+                    <td>Windows</td>
+                    <td>{{design.windows.viprName}}</td>
+                    <td>{{design.windows.host}}</td>
+                    <td>{{design.windows.ip}}</td>
+                    <td>{{design.windows.user}}</td>
+                    <td>{{design.windows.port}}</td>
+                    <td>{{design.windows.version}}</td>
+                </tr>
+
+                <tr ng-if="design.isRhel">
+                    <td>RHEL</td>
+                    <td>{{design.rhel.viprName}}</td>
+                    <td>{{design.rhel.host}}</td>
+                    <td>{{design.rhel.ip}}</td>
+                    <td>{{design.rhel.user}}</td>
+                    <td>{{design.rhel.port}}</td>
+                    <td>{{design.rhel.version}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="well">
+        <legend>External Plugin Details</legend>
+        <table class="table table-condensed table-striped table-responsive table-bordered">
+            <thead>
+            <tr>
+                <th>Plugin Name</th>
+                <th>Integration</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-if="design.isVroPlugin">
+                <td>vCenter vRealize Orchestrator</td>
+                <td>Yes</td>
+            </tr>
+            <tr ng-if="design.isVrosPlugin">
+                <td>vCenter vRealize Operations</td>
+                <td>Yes</td>
+            </tr>
+            <tr ng-if="design.isVasa">
+                <td>VASA provider</td>
+                <td>Yes</td>
+            </tr>
+            <tr ng-if="design.isScvmm">
+                <td>SCVMM Add-in</td>
+                <td>Yes</td>
+            </tr>
+
+
+            </tbody>
+        </table>
+
+    </div>
 
         <p>
             <button style="margin-top:20px" class="btn btn-default" ng-click="toggleEdit()">Edit</button>

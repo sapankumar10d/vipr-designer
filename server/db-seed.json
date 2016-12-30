@@ -1,0 +1,124 @@
+[
+  {
+    "_id": "585a7eb76aa35526c476e276",
+    "dellEmc": {
+      "saName": "Sapan Kumar",
+      "saContact": "+91-9986599696",
+      "pmName": "Alexis Michael",
+      "pmEmail": "alexis.michael.dell.com",
+      "pmContact": "+44-888888",
+      "saEmail": "sapankumar10d@gmail.com"
+    },
+    "customer": {
+      "accnt": "Capgemini UK",
+      "siteid": "444333",
+      "name": "Niel Draper",
+      "email": "niel.draper@capgemini.com",
+      "contact": "+44-888888",
+      "role": "Director",
+      "address": "London, UK"
+    },
+    "cusotmer": {
+      "address": "London, UK"
+    },
+    "numberOfVdc": "1",
+    "isGeoFederation": "no",
+    "viprHa": "2plus1",
+    "vsphereVersion": "6.0",
+    "blockorFile": "block",
+    "isVmax3": false,
+    "isVnxblock": true,
+    "isVplex": true,
+    "isRp": true,
+    "isBrocade": false,
+    "isVcenter": true,
+    "isWindows": true,
+    "isRhel": true,
+    "isVasa": true,
+    "isVrosPlugin": true,
+    "isSouthBound": true,
+    "createDate": "2016-12-21T13:08:07.757Z",
+    "isVmax2": true,
+    "vmax2Smis": "vmax2-smi.volvocars.net",
+    "isCisco": true
+  },
+  {
+    "_id": "586555b50e74d71f54195d22",
+    "dellEmc": {
+      "saEmail": "john.doe@abc.com",
+      "saName": "John Doe",
+      "saContact": "11111111111",
+      "pmName": "George White",
+      "pmEmail": "george.white@abc.com",
+      "pmContact": "555555555"
+    },
+    "customer": {
+      "accnt": "XYZ Corp",
+      "siteid": "2222",
+      "address": "XYZ drive, NJ",
+      "name": "Cynthia Lewis",
+      "email": "cynthia.lewis@xyz.com",
+      "contact": "66666",
+      "role": "IT Manager"
+    },
+    "numberOfVdc": "1",
+    "isGeoFederation": "no",
+    "viprHa": "3plus2",
+    "vsphereVersion": "6.0",
+    "blockorFile": "block",
+    "virtual": {
+      "host": "viprvirt@xyz.com",
+      "ip": "10.20.30.40"
+    },
+    "node1": {
+      "host": "vipr1@xyz.com",
+      "ip": "10.20.30.41"
+    },
+    "node2": {
+      "host": "vipr2@xyz.com",
+      "ip": "10.20.30.42"
+    },
+    "node3": {
+      "host": "vipr3@xyz.com",
+      "ip": "10.20.30.43"
+    },
+    "network": {
+      "mask": "255.255.255.0",
+      "gateway": "10.20.30.1",
+      "dns1": "10.20.30.2",
+      "dns2": "10.20.30.3",
+      "ntp1": "10.20.30.4",
+      "ntp2": "10.20.30.5"
+    },
+    "isVmax3": true,
+    "vmax3Smis": {
+      "viprName": "vmax3-smis",
+      "host": "vmax3smis@xyz.com",
+      "ip": "10.20.30.46",
+      "user": "smiuser",
+      "port": "5989",
+      "version": "8.1.0"
+    },
+    "isCisco": true,
+    "cisco": {
+      "viprName": "ciscosw1",
+      "host": "ciscosw1@xyz.com",
+      "ip": "10.20.30.47",
+      "user": "swuser1",
+      "port": "22",
+      "version": "FOS 7"
+    },
+    "isVcenter": true,
+    "isVroPlugin": true,
+    "isNone": true,
+    "createDate": "2016-12-29T18:28:05.417Z",
+    "node4": {
+      "host": "vipr4@xyz.com",
+      "ip": "10.20.30.44"
+    },
+    "node5": {
+      "host": "vipr5@xyz.com",
+      "ip": "10.20.30.45"
+    }
+  }
+]

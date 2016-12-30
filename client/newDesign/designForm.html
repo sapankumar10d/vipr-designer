@@ -5,92 +5,121 @@
 </div>
 
 <form class="form-horizontal" role="form">
-    <div class="container" style="width: 100%">
-    <div style="float:left; width: 48%">
-        <fieldset class=" ">
-            <legend >Dell EMC Details</legend>
+    <div class="container well">
+        <div style="float:left; width: 48%" class="container">
+            <fieldset>
+                <legend >Dell EMC Details</legend>
 
-        <p>
-            <label>SA Name</label>
-            <input  class="form-control" type="text" ng-model="design.dellEmc.saName" required>
-        </p>
-        <p>
-            <label>SA Email</label>
-            <input  class="form-control" type="email" ng-model="design.dellEmc.saEmail" ng-init="design.dellEmc.saEmail=auth.profile.email" required>
-        </p>
-        <p>
-            <label> SA Contact</label>
-            <input  class="form-control" type="tel" ng-model="design.dellEmc.saContact" required>
-        </p>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">SA Name</label>
+                    <div class="col-sm-8">
+                        <input  class="form-control" type="text" ng-model="design.dellEmc.saName" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">SA Email</label>
+                    <div class="col-sm-8">
+                        <input  class="form-control" type="text" ng-model="design.dellEmc.saEmail" ng-init="design.dellEmc.saEmail=auth.profile.email" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">SA Contact</label>
+                    <div class="col-sm-8">
+                        <input  class="form-control" type="text" ng-model="design.dellEmc.saContact" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">PM Name</label>
+                    <div class="col-sm-8">
+                        <input  class="form-control" type="text" ng-model="design.dellEmc.pmName" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">PM Email</label>
+                    <div class="col-sm-8">
+                        <input  class="form-control" type="text" ng-model="design.dellEmc.pmEmail" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">PM Contact</label>
+                    <div class="col-sm-8">
+                        <input  class="form-control" type="text" ng-model="design.dellEmc.pmContact" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Dell EMC Address</label>
+                    <div class="col-sm-8">
+                        <input  class="form-control" type="text-area" ng-model="design.dellEmc.address" required>
+                    </div>
+                </div>
+                </legend>
+            </fieldset>
+        </div>
 
-        <p>
-            <label>PM Name</label>
-            <input  class="form-control" type="text" ng-model="design.dellEmc.pmName" required>
-        </p>
-        <p>
-            <label>PM Email</label>
-            <input  class="form-control" type="email" ng-model="design.dellEmc.pmEmail" required>
-        </p>
-        <p>
-            <label>PM Contact</label>
-            <input  class="form-control" type="tel" ng-model="design.dellEmc.pmContact" required>
-        </p>
-            </legend>
-        </fieldset>
+
+
+        <div style="float:right; width:50%" class="container">
+            <fieldset>
+                <legend>Customer Details</legend>
+
+
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Company Name</label>
+                    <div class="col-sm-8">
+                        <input  class="form-control" type="text-area" ng-model="design.customer.accnt" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Site ID</label>
+                    <div class="col-sm-8">
+                        <input  class="form-control" type="text-area" ng-model="design.customer.siteid" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Site Address</label>
+                    <div class="col-sm-8">
+                        <input  class="form-control" type="text-area" ng-model="design.customer.address" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Customer Name</label>
+                    <div class="col-sm-8">
+                        <input  class="form-control" type="text-area" ng-model="design.customer.name" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Customer Email</label>
+                    <div class="col-sm-8">
+                        <input  class="form-control" type="text-area" ng-model="design.customer.email" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Customer Contact</label>
+                    <div class="col-sm-8">
+                        <input  class="form-control" type="text-area" ng-model="design.customer.contact" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Customer Role</label>
+                    <div class="col-sm-8">
+                        <input  class="form-control" type="text-area" ng-model="design.customer.role" required placeholder="IT Manager">
+                    </div>
+                </div>
+                </legend>
+            </fieldset>
+        </div>
     </div>
 
-    <div style="float:right; width: 48%" >
+    <div style="clear:both"></div>
 
         <fieldset>
-        <legend>Customer Details</legend>
-
-        <p>
-            <label>Account Name</label>
-            <input  class="form-control" type="text" ng-model="design.customer.accnt" required>
-        </p>
-        <p>
-            <label>Site ID</label>
-            <input  class="form-control" type="text" ng-model="design.customer.siteid" required>
-        </p>
-        <p>
-            <label>Site Address</label>
-            <input  class="form-control" type="text" ng-model="design.customer.address" required>
-        </p>
-
-
-            <p>
-                <label>Customer Name</label>
-                <input  class="form-control" type="text" ng-model="design.customer.name" required>
-            </p>
-            <p>
-                <label>Customer Email</label>
-                <input  class="form-control" type="email" ng-model="design.customer.email" required>
-            </p>
-            <p>
-                <label>Customer Contact</label>
-                <input  class="form-control" type="tel" ng-model="design.customer.contact" required>
-            </p>
-
-            <p>
-                <label>Customer Role</label>
-                <input  class="form-control" type="text" ng-model="design.customer.role" required placeholder="Example: IT Manager">
-            </p>
-
-        </legend>
-        </fieldset>
-
-    </div>
-    </div>
-
-        <div style="clear:both"></div>
-
-        <fieldset>
+            <div class=" container well">
             <legend>Define your VDC</legend>
 
             <div class="form-group">
-                <label for="numberOfVdc" class="col-sm-3 control-label">Number of VDC</label>
+                <label class="col-sm-3 control-label">Number of VDC</label>
                 <div class="col-sm-9">
-                    <select id="numberOfVdc" name="numberOfVdc" class="form-control" ng-model="design.numberOfVdc" uib-tooltip="Number of VDC/Sites in this environment">
+                    <select  name="numberOfVdc" class="form-control" ng-model="design.numberOfVdc" uib-tooltip="Number of VDC/Sites in this environment">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -115,7 +144,7 @@
                 <label for="viprHa" class="col-sm-3 control-label">ViPR High Availability</label>
                 <div class="col-sm-9">
                     <select id="viprHa" name="viprHa" class="form-control" ng-model="design.viprHa" uib-tooltip="3+2 is recommended for production">
-                        <option value="2plus1">2+1</option>
+                        <option selected="selected" value="2plus1">2+1</option>
                         <option value="3plus2">3+2</option>
 
                     </select>
@@ -146,9 +175,10 @@
                     </select>
                 </div>
             </div>
+            </div>
 
+            <div class="container well"  ng-if="design.viprHa == '2plus1'||design.viprHa =='3plus2'">
             <legend>ViPR Infrastructure and Network Requirements</legend>
-            <div class="container"  ng-if="design.viprHa == '2plus1'||design.viprHa =='3plus2'">
                 <p class="col-sm-2">
                     <label class="control-label"> Hostname</label>
                     <input  class="form-control" type="text" ng-model="design.virtual.host" required placeholder="Virtual Hostname">
@@ -157,7 +187,6 @@
                     <input  class="form-control" type="text" ng-model="design.node3.host" required placeholder="Node 3 Hostname">
                     <input ng-if="design.viprHa == '3plus2'" class="form-control" type="text" ng-model="design.node4.host" required placeholder="Node 4 Hostname">
                     <input ng-if="design.viprHa == '3plus2'"class="form-control" type="text" ng-model="design.node5.host" required placeholder="Node 5 Hostname">
-
                 </p>
 
                 <p class="col-sm-2">
@@ -168,7 +197,6 @@
                     <input  class="form-control" type="text" ng-model="design.node3.ip" required placeholder="Node 3 IP">
                     <input ng-if="design.viprHa == '3plus2'" class="form-control" type="text" ng-model="design.node4.ip" required placeholder="Node 4 IP">
                     <input ng-if="design.viprHa == '3plus2'" class="form-control" type="text" ng-model="design.node5.ip" required placeholder="Node 5 IP">
-
                 </p>
 
                 <p class="col-sm-2">
@@ -194,7 +222,7 @@
                 </p>
             </div>
 
-
+            <div class="container well">
             <legend>Storage Systems</legend>
             <div class="col-sm-3"></div>
 
@@ -238,30 +266,21 @@
             <div class="container"  ng-if="design.isVmax2 ||design.isVmax3||design.isVnxBlock">
                 <p class="col-sm-2">
                     <label class="control-label">ViPR Name</label>
-
                 </p>
                 <p class="col-sm-2">
                     <label class="control-label">Hostname</label>
-
                 </p>
-
                 <p class="col-sm-2">
                     <label class="control-label">IP Address</label>
-
                 </p>
-
                 <p class="col-sm-2">
                     <label class="control-label">UserID</label>
-
                 </p>
-
                 <p class="col-sm-2">
                     <label class="control-label">Port</label>
-
                 </p>
                 <p class="col-sm-2">
                     <label class="control-label">Version</label>
-
                 </p>
             </div>
 
@@ -377,7 +396,9 @@
                     <input  class="form-control" type="text" ng-model="design.rp.version" required placeholder="RP Version">
                 </p>
             </div>
+            </div>
 
+            <div class="container well">
             <legend>SAN Fabric</legend>
             <div class="col-sm-3"></div>
 
@@ -469,7 +490,9 @@
                     <input  class="form-control" type="text" ng-model="design.brocade.version" required placeholder="Brocade Version">
                 </p>
             </div>
+            </div>
 
+            <div class="container well">
             <legend>Hosts and Clusters</legend>
             <div class="col-sm-3"></div>
 
@@ -503,6 +526,105 @@
                 </div>
             </div>
 
+            <legend ng-if="design.isVcenter ||design.isWindows ||design.isWindows ||design.isRhel">Hosts and Cluster Details</legend>
+
+            <div class="container"  ng-if="design.isVcenter ||design.isWindows ||design.isWindows ||design.isRhel">
+                <p class="col-sm-2">
+                    <label class="control-label">ViPR Name</label>
+
+                </p>
+                <p class="col-sm-2">
+                    <label class="control-label">Hostname</label>
+
+                </p>
+
+                <p class="col-sm-2">
+                    <label class="control-label">IP Address</label>
+
+                </p>
+
+                <p class="col-sm-2">
+                    <label class="control-label">UserID</label>
+
+                </p>
+
+                <p class="col-sm-2">
+                    <label class="control-label">Port</label>
+
+                </p>
+                <p class="col-sm-2">
+                    <label class="control-label">Version</label>
+
+                </p>
+            </div>
+
+            <div class="container"  ng-if="design.isVcenter">
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.vcenter.viprName" required placeholder="vCenter ViPR Name">
+                </p>
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.vcenter.host" required placeholder="vCenter Mgmt Hostname">
+                </p>
+
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.vcenter.ip" required placeholder="vCenter Mgmt IP Address">
+                </p>
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.vcenter.user" required placeholder="vCenter User">
+                </p>
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.vcenter.port" required placeholder="vCenter Mgmt Port">
+                </p>
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.vcenter.version" required placeholder="vCenter Version">
+                </p>
+            </div>
+            <div class="container"  ng-if="design.isWindows">
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.windows.viprName" required placeholder="Windows ViPR Name">
+                </p>
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.windows.host" required placeholder="Windows Mgmt Hostname">
+                </p>
+
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.windows.ip" required placeholder="Windows Mgmt IP Address">
+                </p>
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.windows.user" required placeholder="Windows User">
+                </p>
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.windows.port" required placeholder="Windows Mgmt Port">
+                </p>
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.windows.version" required placeholder="Windows Version">
+                </p>
+            </div>
+            <div class="container"  ng-if="design.isRhel">
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.rhel.viprName" required placeholder="Rhel ViPR Name">
+                </p>
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.rhel.host" required placeholder="Rhel Mgmt Hostname">
+                </p>
+
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.rhel.ip" required placeholder="Rhel Mgmt IP Address">
+                </p>
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.rhel.user" required placeholder="Rhel User">
+                </p>
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.rhel.port" required placeholder="Rhel Mgmt Port">
+                </p>
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.rhel.version" required placeholder="Rhel Version">
+                </p>
+            </div>
+            </div>
+
+
+            <div class="container well">
             <legend>External Plugins</legend>
             <div class="col-sm-3"></div>
 
@@ -523,7 +645,9 @@
                 </div>
 
             </div>
+            </div>
 
+            <div class="container well">
             <legend>OpenStack Integration</legend>
             <div class="col-sm-3"></div>
 
@@ -546,6 +670,7 @@
                         <li><label> <input type="checkbox" value="northBound" ng-model="design.isNorthBound"/>North Bound</label>
                     </ul>
                 </div>
+            </div>
 
             </div>
         </fieldset>
