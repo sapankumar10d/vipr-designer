@@ -1,0 +1,562 @@
+<div class="row" ng-hide="design._id">
+    <div class="col-md-6">
+        <h2>New Design</h2>
+    </div>
+</div>
+
+<form class="form-horizontal" role="form">
+    <div class="container" style="width: 100%">
+    <div style="float:left; width: 48%">
+        <fieldset class=" ">
+            <legend >Dell EMC Details</legend>
+
+        <p>
+            <label>SA Name</label>
+            <input  class="form-control" type="text" ng-model="design.dellEmc.saName" required>
+        </p>
+        <p>
+            <label>SA Email</label>
+            <input  class="form-control" type="email" ng-model="design.dellEmc.saEmail" ng-init="design.dellEmc.saEmail=auth.profile.email" required>
+        </p>
+        <p>
+            <label> SA Contact</label>
+            <input  class="form-control" type="tel" ng-model="design.dellEmc.saContact" required>
+        </p>
+
+        <p>
+            <label>PM Name</label>
+            <input  class="form-control" type="text" ng-model="design.dellEmc.pmName" required>
+        </p>
+        <p>
+            <label>PM Email</label>
+            <input  class="form-control" type="email" ng-model="design.dellEmc.pmEmail" required>
+        </p>
+        <p>
+            <label>PM Contact</label>
+            <input  class="form-control" type="tel" ng-model="design.dellEmc.pmContact" required>
+        </p>
+            </legend>
+        </fieldset>
+    </div>
+
+    <div style="float:right; width: 48%" >
+
+        <fieldset>
+        <legend>Customer Details</legend>
+
+        <p>
+            <label>Account Name</label>
+            <input  class="form-control" type="text" ng-model="design.customer.accnt" required>
+        </p>
+        <p>
+            <label>Site ID</label>
+            <input  class="form-control" type="text" ng-model="design.customer.siteid" required>
+        </p>
+        <p>
+            <label>Site Address</label>
+            <input  class="form-control" type="text" ng-model="design.customer.address" required>
+        </p>
+
+
+            <p>
+                <label>Customer Name</label>
+                <input  class="form-control" type="text" ng-model="design.customer.name" required>
+            </p>
+            <p>
+                <label>Customer Email</label>
+                <input  class="form-control" type="email" ng-model="design.customer.email" required>
+            </p>
+            <p>
+                <label>Customer Contact</label>
+                <input  class="form-control" type="tel" ng-model="design.customer.contact" required>
+            </p>
+
+            <p>
+                <label>Customer Role</label>
+                <input  class="form-control" type="text" ng-model="design.customer.role" required placeholder="Example: IT Manager">
+            </p>
+
+        </legend>
+        </fieldset>
+
+    </div>
+    </div>
+
+        <div style="clear:both"></div>
+
+        <fieldset>
+            <legend>Define your VDC</legend>
+
+            <div class="form-group">
+                <label for="numberOfVdc" class="col-sm-3 control-label">Number of VDC</label>
+                <div class="col-sm-9">
+                    <select id="numberOfVdc" name="numberOfVdc" class="form-control" ng-model="design.numberOfVdc" uib-tooltip="Number of VDC/Sites in this environment">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="isGeoFederation" class="col-sm-3 control-label">Geo Federation Deployment</label>
+                <div class="col-sm-9">
+                    <select id="isGeoFederation" name="isGeoFederation" class="form-control" ng-model="design.isGeoFederation" uib-tooltip="Will ViPR be deployed in Geo Federation?">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="viprHa" class="col-sm-3 control-label">ViPR High Availability</label>
+                <div class="col-sm-9">
+                    <select id="viprHa" name="viprHa" class="form-control" ng-model="design.viprHa" uib-tooltip="3+2 is recommended for production">
+                        <option value="2plus1">2+1</option>
+                        <option value="3plus2">3+2</option>
+
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="vsphereVersion" class="col-sm-3 control-label">vSphere or Hyper-V Version</label>
+                <div class="col-sm-9">
+                    <select id="vsphereVersion" name="vsphereVersion" class="form-control" ng-model="design.vsphereVersion" uib-tooltip="ViPR can be installed on VMware vSphere and Hyper-V">
+                        <option value="5.0">vSphere 5.0 vApp</option>
+                        <option value="5.1">vSphere 5.1 vApp</option>
+                        <option value="5.5">vSphere 5.5 vApp</option>
+                        <option value="6.0">vSphere 6.0 vApp</option>
+                        <option value="2012R2">Hyper-V Server 2012 R2</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="blockorFile" class="col-sm-3 control-label">Block, file or both?</label>
+                <div class="col-sm-9">
+                    <select id="blockorFile" name="blockorFile" class="form-control" ng-model="design.blockorFile" uib-tooltip="This design is for Block or File or both?">
+                        <option value="block">Block</option>
+                        <option value="file">File</option>
+                        <option value="blockfile">Block & File</option>
+                    </select>
+                </div>
+            </div>
+
+            <legend>ViPR Infrastructure and Network Requirements</legend>
+            <div class="container"  ng-if="design.viprHa == '2plus1'||design.viprHa =='3plus2'">
+                <p class="col-sm-2">
+                    <label class="control-label"> Hostname</label>
+                    <input  class="form-control" type="text" ng-model="design.virtual.host" required placeholder="Virtual Hostname">
+                    <input  class="form-control" type="text" ng-model="design.node1.host" required placeholder="Node 1 Hostname">
+                    <input  class="form-control" type="text" ng-model="design.node2.host" required placeholder="Node 2 Hostname">
+                    <input  class="form-control" type="text" ng-model="design.node3.host" required placeholder="Node 3 Hostname">
+                    <input ng-if="design.viprHa == '3plus2'" class="form-control" type="text" ng-model="design.node4.host" required placeholder="Node 4 Hostname">
+                    <input ng-if="design.viprHa == '3plus2'"class="form-control" type="text" ng-model="design.node5.host" required placeholder="Node 5 Hostname">
+
+                </p>
+
+                <p class="col-sm-2">
+                    <label class="control-label"> IP Address</label>
+                    <input  class="form-control" type="text" ng-model="design.virtual.ip" required placeholder="Virtual IP">
+                    <input  class="form-control" type="text" ng-model="design.node1.ip" required placeholder="Node 1 IP">
+                    <input  class="form-control" type="text" ng-model="design.node2.ip" required placeholder="Node 2 IP">
+                    <input  class="form-control" type="text" ng-model="design.node3.ip" required placeholder="Node 3 IP">
+                    <input ng-if="design.viprHa == '3plus2'" class="form-control" type="text" ng-model="design.node4.ip" required placeholder="Node 4 IP">
+                    <input ng-if="design.viprHa == '3plus2'" class="form-control" type="text" ng-model="design.node5.ip" required placeholder="Node 5 IP">
+
+                </p>
+
+                <p class="col-sm-2">
+                    <label class="control-label"> Netmask</label>
+                    <input  class="form-control" type="text" ng-model="design.network.mask" required placeholder="Netmask">
+                </p>
+
+                <p class="col-sm-2">
+                    <label class="control-label"> Gateway</label>
+                    <input  class="form-control" type="text" ng-model="design.network.gateway" required placeholder="Gateway">
+                </p>
+
+                <p class="col-sm-2">
+                    <label class="control-label"> DNS </label>
+                    <input  class="form-control" type="text" ng-model="design.network.dns1" required placeholder="DNS 1">
+                    <input  class="form-control" type="text" ng-model="design.network.dns2" required placeholder="DNS 2">
+                </p>
+
+                <p class="col-sm-2">
+                    <label class="control-label"> NTP</label>
+                    <input  class="form-control" type="text" ng-model="design.network.ntp1" required placeholder="NTP 1">
+                    <input  class="form-control" type="text" ng-model="design.network.ntp2" required placeholder="NTP 2">
+                </p>
+            </div>
+
+
+            <legend>Storage Systems</legend>
+            <div class="col-sm-3"></div>
+
+            <div uib-tooltip="Select the storage systems to be managed by ViPR">
+                <div class="checkbox col-sm-3">
+                    <ul class="list-unstyled">
+                        <li><label> <input type="checkbox" value="vmax2" ng-model="design.isVmax2"/>VMAX-2</label>
+                        <li><label> <input type="checkbox" value="vmax3" ng-model="design.isVmax3"/>VMAX-3</label>
+                        <li><label> <input type="checkbox" value="vmaxAfa" ng-model="design.isVmaxAfa"/>VMAX-AFA</label>
+                        <li><label> <input type="checkbox" value="xio" ng-model="design.isXio"/>XtremIO</label>
+                        <li><label> <input type="checkbox" value="xiv" ng-model="design.isXiv"/>XIV</label>
+
+                    </ul>
+                </div>
+
+                <div class=" checkbox col-sm-3">
+                    <ul class="list-unstyled">
+                        <li><label> <input type="checkbox" value="vnxUnified" ng-model="design.isVnxUnified"/>VNX-Unified</label>
+                        <li><label> <input type="checkbox" value="vnxblock" ng-model="design.isVnxBlock"/>VNX-Block</label>
+                        <li><label> <input type="checkbox" value="vnxFile" ng-model="design.isVnxFile"/>VNX-File</label>
+                        <li><label> <input type="checkbox" value="unity" ng-model="design.isUnity"/>Unity</label>
+                        <li><label> <input type="checkbox" value="netapp" ng-model="design.isNetapp"/>NetApp</label>
+                    </ul>
+                </div>
+
+                <div class="checkbox col-sm-3">
+                    <ul class="list-unstyled">
+                        <li><label> <input type="checkbox" value="vplex" ng-model="design.isVplex"/>VPLEX</label>
+                        <li><label> <input type="checkbox" value="rp" ng-model="design.isRp"/>Recover Point</label>
+                        <li><label> <input type="checkbox" value="isilon" ng-model="design.isIsilon"/>Isilon</label>
+                        <li><label> <input type="checkbox" value="scaleIo" ng-model="design.isScaleIo"/>ScaleIO</label>
+                        <li><label> <input type="checkbox" value="hds" ng-model="design.isHds"/>HDS</label>
+                        <li><label> <input type="checkbox" value="dd" ng-model="design.isDd"/>Data  Domain</label>
+
+
+                    </ul>
+                </div>
+            </div>
+
+            <legend ng-if="design.isVmax2 ||design.isVmax3||design.isVnxBlock">Storage Systems Details</legend>
+            <div class="container"  ng-if="design.isVmax2 ||design.isVmax3||design.isVnxBlock">
+                <p class="col-sm-2">
+                    <label class="control-label">ViPR Name</label>
+
+                </p>
+                <p class="col-sm-2">
+                    <label class="control-label">Hostname</label>
+
+                </p>
+
+                <p class="col-sm-2">
+                    <label class="control-label">IP Address</label>
+
+                </p>
+
+                <p class="col-sm-2">
+                    <label class="control-label">UserID</label>
+
+                </p>
+
+                <p class="col-sm-2">
+                    <label class="control-label">Port</label>
+
+                </p>
+                <p class="col-sm-2">
+                    <label class="control-label">Version</label>
+
+                </p>
+            </div>
+
+            <div class="container"  ng-if="design.isVmax2">
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.vmax2Smis.viprName" required placeholder="VMAX-2 SMIS ViPR Name">
+                </p>
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.vmax2Smis.host" required placeholder="VMAX-2 SMIS Hostname">
+                </p>
+
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.vmax2Smis.ip" required placeholder="VMAX-2 SMIS IP Address">
+                </p>
+
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.vmax2Smis.user" required placeholder="VMAX-2 SMIS User">
+                </p>
+
+                <p class="col-sm-2">
+                    <input class="form-control" type="text" ng-model="design.vmax2Smis.port" required placeholder="VMAX-2 SMIS Port">
+                </p>
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.vmax2Smis.version" required placeholder="VMAX-2 SMIS Version">
+                </p>
+
+            </div>
+
+            <div class="container"  ng-if="design.isVmax3">
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.vmax3Smis.viprName" required placeholder="VMAX-3 SMIS ViPR Name">
+                </p>
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.vmax3Smis.host" required placeholder="VMAX-3 SMIS Hostname">
+                </p>
+
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.vmax3Smis.ip" required placeholder="VMAX-3 SMIS IP Address">
+                </p>
+                <p class="col-sm-2">
+                    <input class="form-control" type="text" ng-model="design.vmax3Smis.user" required placeholder="VMAX-3 SMIS User">
+                </p>
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.vmax3Smis.port" required placeholder="VMAX-3 SMIS Port">
+                </p>
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.vmax3Smis.version" required placeholder="VMAX-3 SMIS Version">
+                </p>
+            </div>
+
+
+            <div class="container"  ng-if="design.isVnxBlock">
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.vnxBlock.viprName" required placeholder="VNX-Block SMIS ViPR Name">
+                </p>
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.vnxBlock.host" required placeholder="VNX-Block SMIS Hostname">
+                </p>
+
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.vnxBlock.ip" required placeholder="VNX-Block SMIS IP Address">
+                </p>
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.vnxBlock.user" required placeholder="VNX-Block SMIS User">
+                </p>
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.vnxBlock.port" required placeholder="VNX-Block SMIS Port">
+                </p>
+                <p class="col-sm-2">
+                <input  class="form-control" type="text" ng-model="design.vnxBlock.version" required placeholder="VNX-Block SMIS Version">
+                </p>
+            </div>
+
+            <div class="container"  ng-if="design.isVplex">
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.vplex.viprName" required placeholder="VPLEX ViPR Name">
+                </p>
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.vplex.host" required placeholder="VPLEX Mgmt Hostname">
+                </p>
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.vplex.ip" required placeholder="VPLEX Mgmt IP Address">
+                </p>
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.vplex.user" required placeholder="VPLEX User">
+                </p>
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.vplex.port" required placeholder="VPLEX Mgmt Port">
+                </p>
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.vplex.version" required placeholder="VPLEX Version">
+                </p>
+            </div>
+
+            <div class="container"  ng-if="design.isRp">
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.rp.viprName" required placeholder="RP ViPR Name">
+                </p>
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.rp.host" required placeholder="RP Mgmt Hostname">
+                </p>
+
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.rp.ip" required placeholder="RP Mgmt IP Address">
+                </p>
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.rp.user" required placeholder="RP User">
+                </p>
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.rp.port" required placeholder="RP Mgmt Port">
+                </p>
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.rp.version" required placeholder="RP Version">
+                </p>
+            </div>
+
+            <legend>SAN Fabric</legend>
+            <div class="col-sm-3"></div>
+
+            <div uib-tooltip="Select the SAN Switches to be managed by ViPR">
+                <div class="checkbox col-sm-3">
+                    <ul class="list-unstyled">
+                        <li><label> <input type="checkbox" value="cisco" ng-model="design.isCisco"/>Cisco</label>
+                    </ul>
+                </div>
+                <div class="checkbox col-sm-3">
+                    <ul class="list-unstyled">
+                        <li><label> <input type="checkbox" value="brocade" ng-model="design.isBrocade"/>Brocade</label>
+                    </ul>
+                </div>
+            </div>
+
+            <legend ng-if="design.isCisco ||design.isBrocade">Fabric Manager Details</legend>
+
+            <div class="container"  ng-if="design.isCisco ||design.isBrocade">
+                <p class="col-sm-2">
+                    <label class="control-label">ViPR Name</label>
+
+                </p>
+                <p class="col-sm-2">
+                    <label class="control-label">Hostname</label>
+
+                </p>
+
+                <p class="col-sm-2">
+                    <label class="control-label">IP Address</label>
+
+                </p>
+
+                <p class="col-sm-2">
+                    <label class="control-label">UserID</label>
+
+                </p>
+
+                <p class="col-sm-2">
+                    <label class="control-label">Port</label>
+
+                </p>
+                <p class="col-sm-2">
+                    <label class="control-label">Version</label>
+
+                </p>
+                </div>
+
+            <div class="container"  ng-if="design.isCisco">
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.cisco.viprName" required placeholder="Cisco ViPR Name">
+                </p>
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.cisco.host" required placeholder="Cisco Mgmt Hostname">
+                </p>
+
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.cisco.ip" required placeholder="Cisco Mgmt IP Address">
+                </p>
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.cisco.user" required placeholder="Cisco User">
+                </p>
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.cisco.port" required placeholder="Cisco Mgmt Port">
+                </p>
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.cisco.version" required placeholder="Cisco Version">
+                </p>
+            </div>
+
+            <div class="container"  ng-if="design.isBrocade">
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.brocade.viprName" required placeholder="Brocade ViPR Name">
+                </p>
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.brocade.host" required placeholder="Brocade Mgmt Hostname">
+                </p>
+
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.brocade.ip" required placeholder="Brocade Mgmt IP Address">
+                </p>
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.brocade.user" required placeholder="Brocade User">
+                </p>
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.brocade.port" required placeholder="Brocade Mgmt Port">
+                </p>
+                <p class="col-sm-2">
+                    <input  class="form-control" type="text" ng-model="design.brocade.version" required placeholder="Brocade Version">
+                </p>
+            </div>
+
+            <legend>Hosts and Clusters</legend>
+            <div class="col-sm-3"></div>
+
+            <div uib-tooltip="Select the Hosts and Clusters to be managed by ViPR">
+                <div class="checkbox col-sm-2">
+                    <ul class="list-unstyled">
+                        <li><label> <input type="checkbox" value="vcenter" ng-model="design.isVcenter"/>vCenter</label>
+                        <li><label> <input type="checkbox" value="windows" ng-model="design.isWindows"/>Windows</label>
+
+                    </ul>
+                </div>
+
+                <div class="checkbox col-sm-2">
+                    <ul class="list-unstyled">
+                        <li><label> <input type="checkbox" value="aix" ng-model="design.isAix"/>AIX</label>
+                        <li><label> <input type="checkbox" value="aixvio" ng-model="design.isAixvio"/>AIX VIO</label>
+                    </ul>
+                </div>
+                <div class="checkbox col-sm-2">
+                    <ul class="list-unstyled">
+                        <li><label> <input type="checkbox" value="rhel" ng-model="design.isRhel"/>Redhat/SUSE</label>
+                        <li><label> <input type="checkbox" value="hpux" ng-model="design.isHpux"/>HP-UX</label>
+                    </ul>
+                </div>
+
+                <div class="checkbox col-sm-2">
+                    <ul class="list-unstyled">
+                        <li><label> <input type="checkbox" value="vblock" ng-model="design.isVblock"/>VBlock/VxBlock</label>
+                        <li><label> <input type="checkbox" value="vblockImageServer" ng-model="design.isVblockImageServer"/>VBlock/VxBlock Image Servers</label>
+                    </ul>
+                </div>
+            </div>
+
+            <legend>External Plugins</legend>
+            <div class="col-sm-3"></div>
+
+            <div uib-tooltip="Select the VMware/Microsoft plugins to be integrated with ViPR">
+                <div class="checkbox col-sm-3">
+                    <ul class="list-unstyled">
+                        <li><label> <input type="checkbox" value="vroPlugin" ng-model="design.isVroPlugin"/>vCenter vRealize Orchestrator</label>
+                        <li><label> <input type="checkbox" value="vropsPlugin" ng-model="design.isVrosPlugin"/>vCenter vRealize Operations</label>
+
+                    </ul>
+                </div>
+
+                <div class="checkbox col-sm-3">
+                    <ul class="list-unstyled">
+                        <li><label> <input type="checkbox" value="vasa" ng-model="design.isVasa"/>VASA provider</label>
+                        <li><label> <input type="checkbox" value="svcmm" ng-model="design.isScvmm"/>SCVMM Add-in</label>
+                    </ul>
+                </div>
+
+            </div>
+
+            <legend>OpenStack Integration</legend>
+            <div class="col-sm-3"></div>
+
+            <div uib-tooltip="Select the OpenStack Integration type">
+                <div class="checkbox col-sm-3">
+                    <ul class="list-unstyled">
+                        <li><label> <input type="checkbox" value="none" ng-model="design.isNone"/>None</label>
+
+                    </ul>
+                </div>
+
+                <div class="checkbox col-sm-3">
+                    <ul class="list-unstyled">
+                        <li><label> <input type="checkbox" value="southBound" ng-model="design.isSouthBound"/>South Bound</label>
+                    </ul>
+                </div>
+
+                <div class="checkbox col-sm-3">
+                    <ul class="list-unstyled">
+                        <li><label> <input type="checkbox" value="northBound" ng-model="design.isNorthBound"/>North Bound</label>
+                    </ul>
+                </div>
+
+            </div>
+        </fieldset>
+
+
+
+    <div>
+        <p>
+            <button style="margin-top:20px" class="btn btn-default" ng-click="saveDesign(design)">Save</button>
+            <button style="margin-top:20px" class="btn btn-default" ng-click="back()">Back</button>
+        </p>
+    </div>
+
+</form>

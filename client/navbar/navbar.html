@@ -1,0 +1,19 @@
+<nav class="navbar  navbar-inverse navbar-fixed-top container-fluid">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <div class="navbar-brand" ui-sref="/">ViPR Controller Designer</div>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-left">
+                <li ng-class="{active: activeTab === '/'}"><a ui-sref="/">Design</a></li>
+                <li ng-class="{active: activeTab === 'essm'}"><a ui-sref="essm">Support Matrix</a></li>
+                <li ng-if="!auth.isAuthenticated" ng-class="{active: activeTab === 'login'}"><a ui-sref="login">SignIn</a></li>
+
+            </ul>
+            <div class="navbar-right" >
+            <label class="navbar-text pull-left">{{auth.profile.email}}</label>
+            <button ng-if="auth.isAuthenticated" type="button" ng-click="logout()"  class="btn btn-default navbar-btn" style="float: right;" >Signout</button>
+            </div>
+        </div>
+    </div>
+</nav>

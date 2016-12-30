@@ -1,0 +1,35 @@
+{
+  "name": "viprdesigner",
+  "version": "1.0.0",
+  "description": "ViPR Controller Designer App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sapan",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.6.0",
+    "angular-animate": "^1.6.1",
+    "angular-aria": "^1.6.1",
+    "angular-material": "^1.1.1",
+    "angular-route": "^1.6.0",
+    "angular-ui-bootstrap": "^2.3.1",
+    "angular-ui-router": "^0.3.2",
+    "auth0-angular": "^4.2.7",
+    "bcryptjs": "^2.4.0",
+    "body-parser": "^1.15.2",
+    "bootstrap": "^3.3.7",
+    "ejs": "^2.5.5",
+    "express": "^4.14.0",
+    "express-jwt": "^5.1.0",
+    "express-session": "^1.14.2",
+    "jsonwebtoken": "^7.2.1",
+    "lodash": "^4.17.3",
+    "mongodb": "^2.2.16",
+    "mongoskin": "^2.1.0",
+    "q": "^1.4.1",
+    "request": "^2.79.0",
+    "rootpath": "^0.1.2"
+  }
+}
