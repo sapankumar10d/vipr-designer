@@ -31,7 +31,7 @@ mongodb.MongoClient.connect('mongodb://localhost:27017/viprDesigner', function (
     console.log("Database connection ready");
 
     // Initialize the app.
-    app.listen(8183, function(){
+    app.listen(8888, function(){
         console.log( "App now listening on 8888" );
 
     });
