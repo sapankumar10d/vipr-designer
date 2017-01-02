@@ -8,7 +8,7 @@ angular.module('viprApp', ['ui.router','ngMaterial', 'ui.bootstrap', 'auth0'])
               url: '/',
               templateUrl: 'home/home.html',
               controller: 'homeCtrl',
-              //data: { requiresLogin: true},
+              data: { requiresLogin: true},
               resolve: {
                   designs: function(dataService) {
                       return dataService.getDesigns();
@@ -19,13 +19,13 @@ angular.module('viprApp', ['ui.router','ngMaterial', 'ui.bootstrap', 'auth0'])
               url: '/:designId',
               templateUrl: 'design/design.html',
               controller: 'editDesignCtrl',
-              //data: { requiresLogin: true}
+              data: { requiresLogin: true}
           })
           .state('newdesign', {
               url: '/newdesign/',
               templateUrl: 'newDesign/designForm.html',
               controller: 'newDesignCtrl',
-              //data: { requiresLogin: true}
+              data: { requiresLogin: true}
 
           })
             .state('login', {
@@ -37,7 +37,7 @@ angular.module('viprApp', ['ui.router','ngMaterial', 'ui.bootstrap', 'auth0'])
                 url:'/essm/',
                 templateUrl: 'essm/essm.html',
                 controller: 'essmCtrl',
-                //data: {requiresLogin: true}
+                data: {requiresLogin: true}
             })
         $urlRouterProvider.otherwise('/');
 
