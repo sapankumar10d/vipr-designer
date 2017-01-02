@@ -32,7 +32,7 @@ mongodb.MongoClient.connect('mongodb://localhost:27017/viprDesigner', function (
 
     // Initialize the app.
     app.listen(8183, function(){
-        console.log( "App now listening on 8183" );
+        console.log( "App now listening on 8888" );
 
     });
 });

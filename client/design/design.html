@@ -1,40 +1,37 @@
-<div class = "row">
-    <div class="col-md-6">
-        <h2>
-            {{ design.customer.accnt }}, Started: {{ design.createDate| date:'dd-MMM-yyyy'}}
-        </h2>
+<div class = "container panel">
+    <div class="col-md-10">
+        <h1>
+            ViPR Controller Design: {{ design.customer.accnt }}
+        </h1>
     </div>
-    <div class="col-md-3">
-    </div>
-    <div class="col-md-3">
-        <a ui-sref="/"><button style="margin-top:20px" class="btn btn-danger pull-right" ng-click="deleteDesign(design._id)">Delete Design</button></a>
+
+    <div class="col-md-2">
+        <a ui-sref="/"><button  style="margin-top:20px" class="btn btn-danger pull-right" ng-click="deleteDesign(design._id)">Delete Design</button></a>
     </div>
 
 </div>
 <div ng-hide="editMode" class="container" id="exportThis">
     <div class="container" style="width: 100%">
         <div style="float:left; width: 48%" class="well">
-            <legend>Dell EMC Details</legend>
+            <legend>Created For:</legend>
+            <p ng-if="design.customer.name">{{design.customer.name}}, {{design.customer.role}}</p>
+            <p ng-if="design.customer.email"><a ng-href="mailto:{{ design.customer.email }}" target="_blank">{{design.customer.email}}</a>, {{design.customer.contact}}</p>
 
-            <p ng-if="design.dellEmc.saName"><label>SA Name:</label> {{ design.dellEmc.saName }}</p>
-            <p ng-if="design.dellEmc.saEmail"><label>SA Email:</label> <a ng-href="mailto:{{ design.dellEmc.saEmail }}" target="_blank">{{ design.dellEmc.saEmail }} </a></p>
-            <p ng-if="design.dellEmc.saContact"><label>SA Contact:</label> {{ design.dellEmc.saContact }} </p>
-            <p ng-if="design.dellEmc.pmName"><label>PM Name:</label> {{ design.dellEmc.pmName }}</p>
-            <p ng-if="design.dellEmc.pmEmail"><label>PM Email:</label> <a ng-href="mailto:{{ design.dellEmc.pmEmail }}" target="_blank">{{ design.dellEmc.pmEmail }} </a></p>
-            <p ng-if="design.dellEmc.pmContact"><label>PM Contact:</label> {{ design.dellEmc.pmContact }} </p>
-            <p ng-if="design.dellEmc.address"><label>Dell EMC Address:</label> {{ design.dellEmc.address }} </p>
+            <p ng-if="design.customer.accnt">{{design.customer.accnt}}, </p>
+            <p ng-if="design.customer.address">{{ design.customer.address }} </p>
+            <p>Site ID: {{design.customer.siteid}}</p>
 
         </div>
         <div style="float:right; width: 48%" class="well">
-            <legend>Customer Details</legend>
 
-            <p ng-if="design.customer.accnt"><label> Name:</label> {{ design.customer.accnt }}</p>
-            <p ng-if="design.customer.siteid"><label>Site ID:</label> {{ design.customer.siteid }} </a></p>
-            <p ng-if="design.customer.address"><label>Site Address :</label> {{ design.customer.address }} </p>
-            <p ng-if="design.customer.name"><label>Customer Name:</label> {{ design.customer.name }}</p>
-            <p ng-if="design.customer.email"><label>Customer Email:</label> <a ng-href="mailto:{{ design.customer.email }}" target="_blank">{{ design.customer.email }} </a></p>
-            <p ng-if="design.customer.contact"><label>Customer Contact:</label> {{ design.customer.contact }} </p>
-            <p ng-if="design.customer.role"><label>Customer Role:</label> {{ design.customer.role }} </p>
+            <legend>Created By:</legend>
+            <p ng-if="design.dellEmc.saName">{{ design.dellEmc.saName }}, Solutions Architect</p>
+            <p ng-if="design.dellEmc.saEmail"><a ng-href="mailto:{{ design.dellEmc.saEmail }}" target="_blank">{{ design.dellEmc.saEmail }} </a>, {{ design.dellEmc.saContact }}</p>
+            <br>
+            <p ng-if="design.dellEmc.pmName">{{ design.dellEmc.pmName }}, Project Manager</p>
+            <p ng-if="design.dellEmc.pmEmail"><a ng-href="mailto:{{ design.dellEmc.pmEmail }}" target="_blank">{{ design.dellEmc.pmEmail }} </a>, {{design.dellEmc.pmContact}}</p>
+            <p ng-if="design.dellEmc.address"> {{ design.dellEmc.address }} </p>
+
         </div>
 
         <div style="clear:both"></div>
@@ -75,6 +72,9 @@
                     <th>Gateway</th>
                     <th>DNS Servers</th>
                     <th>NTP servers</th>
+                    <th>vCPU</th>
+                    <th>vRAM(GB)</th>
+                    <th>Disk(GB,Thick)</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -86,6 +86,11 @@
                     <td>{{design.network.gateway}}</td>
                     <td>{{design.network.dns1}}</td>
                     <td>{{design.network.ntp1}}</td>
+                    <td ng-if="design.viprHa =='2plus1'">2</td>
+                    <td ng-if="design.viprHa =='3plus2'">4</td>
+                    <td ng-if="design.viprHa =='2plus1'">8</td>
+                    <td ng-if="design.viprHa =='3plus2'">16</td>
+                    <td>600</td>
 
                 </tr>
                 <tr>
@@ -96,6 +101,12 @@
                     <td>{{design.network.gateway}}</td>
                     <td>{{design.network.dns2}}</td>
                     <td>{{design.network.ntp2}}</td>
+                    <td ng-if="design.viprHa =='2plus1'">2</td>
+                    <td ng-if="design.viprHa =='3plus2'">4</td>
+                    <td ng-if="design.viprHa =='2plus1'">8</td>
+                    <td ng-if="design.viprHa =='3plus2'">16</td>
+                    <td>600</td>
+
                 </tr>
                 <tr>
                     <td>Node 2</td>
@@ -105,6 +116,12 @@
                     <td>{{design.network.gateway}}</td>
                     <td></td>
                     <td></td>
+                    <td ng-if="design.viprHa =='2plus1'">2</td>
+                    <td ng-if="design.viprHa =='3plus2'">4</td>
+                    <td ng-if="design.viprHa =='2plus1'">8</td>
+                    <td ng-if="design.viprHa =='3plus2'">16</td>
+                    <td>600</td>
+
                 </tr>
 
                 <tr>
@@ -115,6 +132,12 @@
                     <td>{{design.network.gateway}}</td>
                     <td></td>
                     <td></td>
+                    <td ng-if="design.viprHa =='2plus1'">2</td>
+                    <td ng-if="design.viprHa =='3plus2'">4</td>
+                    <td ng-if="design.viprHa =='2plus1'">8</td>
+                    <td ng-if="design.viprHa =='3plus2'">16</td>
+                    <td>600</td>
+
                 </tr>
 
                 <tr ng-if="design.viprHa =='3plus2'">
@@ -125,6 +148,12 @@
                     <td>{{design.network.gateway}}</td>
                     <td></td>
                     <td></td>
+                    <td ng-if="design.viprHa =='2plus1'">2</td>
+                    <td ng-if="design.viprHa =='3plus2'">4</td>
+                    <td ng-if="design.viprHa =='2plus1'">8</td>
+                    <td ng-if="design.viprHa =='3plus2'">16</td>
+                    <td>600</td>
+
                 </tr>
 
                 <tr ng-if="design.viprHa =='3plus2'">
@@ -135,6 +164,12 @@
                     <td>{{design.network.gateway}}</td>
                     <td></td>
                     <td></td>
+                    <td ng-if="design.viprHa =='2plus1'">2</td>
+                    <td ng-if="design.viprHa =='3plus2'">4</td>
+                    <td ng-if="design.viprHa =='2plus1'">8</td>
+                    <td ng-if="design.viprHa =='3plus2'">16</td>
+                    <td>600</td>
+
                 </tr>
                 </tbody>
             </table>
@@ -318,12 +353,31 @@
                 <td>SCVMM Add-in</td>
                 <td>Yes</td>
             </tr>
-
-
             </tbody>
         </table>
-
     </div>
+
+        <div ng-if="!design.isNone" class="well">
+            <legend>Open Stack Integration</legend>
+            <table  class="table table-condensed table-striped table-responsive table-bordered">
+                <thead>
+                <tr>
+                    <th>Integration Type</th>
+                    <th>Integration</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-if="design.isNorthBound">
+                    <td>North Bound</td>
+                    <td>Yes</td>
+                </tr>
+                <tr ng-if="design.isSouthBound">
+                    <td>South Bound</td>
+                    <td>Yes</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
 
         <p>
             <button style="margin-top:20px" class="btn btn-default" ng-click="toggleEdit()">Edit</button>

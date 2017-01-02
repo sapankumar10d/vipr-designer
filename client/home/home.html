@@ -16,11 +16,9 @@
         <tbody>
         <tr  ng-repeat="design in designs | filter:design.dellEmc.saEmail = auth.profile.email" style="cursor:pointer">
             <td>
-                <a ui-sref="designDetail({designId: design._id})">{{ design.customer.accnt }} :: {{ design.createDate| date:'yyyy-MM-dd' }}</a>
+                <a ui-sref="designDetail({designId: design._id})">{{ design.customer.accnt }} :: {{ design.createDate| date:'dd-MMM-yyyy' }}</a>
             </td>
-            <td>
-                <a ui-sref="/"><button  class="btn btn-danger pull-right" ng-click="deleteDesign(design._id)">Delete</button></a>
-            </td>
+
         </tr>
         </tbody>
     </table>
