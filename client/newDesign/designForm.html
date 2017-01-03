@@ -231,20 +231,20 @@
                     <ul class="list-unstyled">
                         <li><label> <input type="checkbox" value="vmax2" ng-model="design.isVmax2"/>VMAX-2</label>
                         <li><label> <input type="checkbox" value="vmax3" ng-model="design.isVmax3"/>VMAX-3</label>
-                        <li><label> <input type="checkbox" value="vmaxAfa" ng-model="design.isVmaxAfa"/>VMAX-AFA</label>
-                        <li><label> <input type="checkbox" value="xio" ng-model="design.isXio"/>XtremIO</label>
-                        <li><label> <input type="checkbox" value="xiv" ng-model="design.isXiv"/>XIV</label>
+                        <li><label> <input type="checkbox" onclick="return false" value="vmaxAfa" ng-model="design.isVmaxAfa"/>VMAX-AFA</label>
+                        <li><label> <input type="checkbox" onclick="return false" value="xio" ng-model="design.isXio"/>XtremIO</label>
+                        <li><label> <input type="checkbox" onclick="return false" value="xiv" ng-model="design.isXiv"/>XIV</label>
 
                     </ul>
                 </div>
 
                 <div class=" checkbox col-sm-3">
                     <ul class="list-unstyled">
-                        <li><label> <input type="checkbox" value="vnxUnified" ng-model="design.isVnxUnified"/>VNX-Unified</label>
+                        <li><label> <input type="checkbox" onclick="return false" value="vnxUnified" ng-model="design.isVnxUnified"/>VNX-Unified</label>
                         <li><label> <input type="checkbox" value="vnxblock" ng-model="design.isVnxBlock"/>VNX-Block</label>
-                        <li><label> <input type="checkbox" value="vnxFile" ng-model="design.isVnxFile"/>VNX-File</label>
-                        <li><label> <input type="checkbox" value="unity" ng-model="design.isUnity"/>Unity</label>
-                        <li><label> <input type="checkbox" value="netapp" ng-model="design.isNetapp"/>NetApp</label>
+                        <li><label> <input type="checkbox" onclick="return false" value="vnxFile" ng-model="design.isVnxFile"/>VNX-File</label>
+                        <li><label> <input type="checkbox" onclick="return false" value="unity" ng-model="design.isUnity"/>Unity</label>
+                        <li><label> <input type="checkbox" onclick="return false" value="netapp" ng-model="design.isNetapp"/>NetApp</label>
                     </ul>
                 </div>
 
@@ -252,10 +252,10 @@
                     <ul class="list-unstyled">
                         <li><label> <input type="checkbox" value="vplex" ng-model="design.isVplex"/>VPLEX</label>
                         <li><label> <input type="checkbox" value="rp" ng-model="design.isRp"/>Recover Point</label>
-                        <li><label> <input type="checkbox" value="isilon" ng-model="design.isIsilon"/>Isilon</label>
-                        <li><label> <input type="checkbox" value="scaleIo" ng-model="design.isScaleIo"/>ScaleIO</label>
-                        <li><label> <input type="checkbox" value="hds" ng-model="design.isHds"/>HDS</label>
-                        <li><label> <input type="checkbox" value="dd" ng-model="design.isDd"/>Data  Domain</label>
+                        <li><label> <input type="checkbox" onclick="return false" value="isilon" ng-model="design.isIsilon"/>Isilon</label>
+                        <li><label> <input type="checkbox" onclick="return false" value="scaleIo" ng-model="design.isScaleIo"/>ScaleIO</label>
+                        <li><label> <input type="checkbox" onclick="return false" value="hds" ng-model="design.isHds"/>HDS</label>
+                        <li><label> <input type="checkbox" onclick="return false" value="dd" ng-model="design.isDd"/>Data  Domain</label>
 
 
                     </ul>
@@ -273,14 +273,17 @@
                 <p class="col-sm-2">
                     <label class="control-label">IP Address</label>
                 </p>
-                <p class="col-sm-2">
+                <p class="col-sm-1">
                     <label class="control-label">UserID</label>
                 </p>
-                <p class="col-sm-2">
+                <p class="col-sm-1">
                     <label class="control-label">Port</label>
                 </p>
                 <p class="col-sm-2">
-                    <label class="control-label">Version</label>
+                    <label class="control-label">Code</label>
+                </p>
+                <p class="col-sm-2">
+                    <label class="control-label">SE/SMI-S</label>
                 </p>
             </div>
 
@@ -296,15 +299,28 @@
                     <input  class="form-control" type="text" ng-model="design.vmax2Smis.ip" required placeholder="VMAX-2 SMIS IP Address">
                 </p>
 
-                <p class="col-sm-2">
+                <p class="col-sm-1">
                     <input  class="form-control" type="text" ng-model="design.vmax2Smis.user" required placeholder="VMAX-2 SMIS User">
                 </p>
 
-                <p class="col-sm-2">
+                <p class="col-sm-1">
                     <input class="form-control" type="text" ng-model="design.vmax2Smis.port" required placeholder="VMAX-2 SMIS Port">
                 </p>
+
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.vmax2Smis.version" required placeholder="VMAX-2 SMIS Version">
+                    <select  class="form-control" ng-model="design.vmax2.code" >
+                        <option value="5876.230">5876.230</option>
+                        <option value="5876.229">5876.229</option>
+                        <option value="5876.288">5876.288</option>
+                    </select>
+                </p>
+
+                <p class="col-sm-2">
+                    <select  class="form-control" ng-model="design.vmax2.se" >
+                        <option value="7.6.2.67/4.6.2.29">7.6.2.67/4.6.2.29</option>
+                        <option value="8.1.0.20/8.1.0.11">8.1.0.20/8.1.0.11</option>
+                        <option value="8.2.0.1/8.2.0.1">8.2.0.1/8.2.0.1</option>
+                    </select>
                 </p>
 
             </div>
@@ -320,14 +336,26 @@
                 <p class="col-sm-2">
                     <input  class="form-control" type="text" ng-model="design.vmax3Smis.ip" required placeholder="VMAX-3 SMIS IP Address">
                 </p>
-                <p class="col-sm-2">
+                <p class="col-sm-1">
                     <input class="form-control" type="text" ng-model="design.vmax3Smis.user" required placeholder="VMAX-3 SMIS User">
                 </p>
-                <p class="col-sm-2">
+                <p class="col-sm-1">
                     <input  class="form-control" type="text" ng-model="design.vmax3Smis.port" required placeholder="VMAX-3 SMIS Port">
                 </p>
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.vmax3Smis.version" required placeholder="VMAX-3 SMIS Version">
+                    <select  class="form-control" ng-model="design.vmax3.code" >
+                        <option value="5977.690">5977.690</option>
+                        <option value="5977.691">5977.691</option>
+                        <option value="5977.813">5977.813</option>
+                    </select>
+                </p>
+
+                <p class="col-sm-2">
+                    <select  class="form-control" ng-model="design.vmax3.se" >
+                        <option value="8.2.0.1/8.2.0.1">8.2.0.1/8.2.0.1</option>
+                        <option value="8.1.0.20/8.1.0.11">8.1.0.20/8.1.0.11</option>
+                        <option value="8.1.2.0/8.1.2.0">8.1.2.0/8.1.2.0</option>
+                    </select>
                 </p>
             </div>
 
@@ -343,14 +371,25 @@
                 <p class="col-sm-2">
                     <input  class="form-control" type="text" ng-model="design.vnxBlock.ip" required placeholder="VNX-Block SMIS IP Address">
                 </p>
-                <p class="col-sm-2">
+                <p class="col-sm-1">
                     <input  class="form-control" type="text" ng-model="design.vnxBlock.user" required placeholder="VNX-Block SMIS User">
                 </p>
-                <p class="col-sm-2">
+                <p class="col-sm-1">
                     <input  class="form-control" type="text" ng-model="design.vnxBlock.port" required placeholder="VNX-Block SMIS Port">
                 </p>
                 <p class="col-sm-2">
-                <input  class="form-control" type="text" ng-model="design.vnxBlock.version" required placeholder="VNX-Block SMIS Version">
+                    <select  class="form-control" ng-model="design.vnxBlock.code" >
+                        <option value="Gen1-5.31.x">Gen1-5.31.x</option>
+                        <option value="Gen1-5.32.x">Gen1-5.32.x</option>
+                        <option value="Gen2-5.33.x">Gen2-5.33.x</option>
+                    </select>
+                </p>
+
+                <p class="col-sm-2">
+                    <select  class="form-control" ng-model="design.vnxBlock.se" >
+                        <option value="7.6.2.102/4.6.2.30">7.6.2.102/4.6.2.30</option>
+                        <option value="7.6.2.102/4.6.2.31">7.6.2.102/4.6.2.31</option>
+                    </select>
                 </p>
             </div>
 
@@ -364,14 +403,19 @@
                 <p class="col-sm-2">
                     <input  class="form-control" type="text" ng-model="design.vplex.ip" required placeholder="VPLEX Mgmt IP Address">
                 </p>
-                <p class="col-sm-2">
+                <p class="col-sm-1">
                     <input  class="form-control" type="text" ng-model="design.vplex.user" required placeholder="VPLEX User">
                 </p>
-                <p class="col-sm-2">
+                <p class="col-sm-1">
                     <input  class="form-control" type="text" ng-model="design.vplex.port" required placeholder="VPLEX Mgmt Port">
                 </p>
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.vplex.version" required placeholder="VPLEX Version">
+                    <select  class="form-control" ng-model="design.vplex.code" >
+                        <option value="6.0.0.1">6.0.0.1</option>
+                        <option value="5.5.1.x">5.5.1.x</option>
+                        <option value="5.5.0.x">5.5.0.x</option>
+                        <option value="5.3.0.x">5.3.0.x</option>
+                    </select>
                 </p>
             </div>
 
@@ -386,14 +430,19 @@
                 <p class="col-sm-2">
                     <input  class="form-control" type="text" ng-model="design.rp.ip" required placeholder="RP Mgmt IP Address">
                 </p>
-                <p class="col-sm-2">
+                <p class="col-sm-1">
                     <input  class="form-control" type="text" ng-model="design.rp.user" required placeholder="RP User">
                 </p>
-                <p class="col-sm-2">
+                <p class="col-sm-1">
                     <input  class="form-control" type="text" ng-model="design.rp.port" required placeholder="RP Mgmt Port">
                 </p>
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.rp.version" required placeholder="RP Version">
+                    <select  class="form-control" ng-model="design.rp.code" >
+                        <option value="4.1.1.x">4.1.1.x</option>
+                        <option value="4.1.2.x">4.1.2.x</option>
+                        <option value="4.1.3.x">4.1.3.x</option>
+                        <option value="4.4.1.x">4.4.1.x</option>
+                    </select>
                 </p>
             </div>
             </div>
@@ -507,21 +556,21 @@
 
                 <div class="checkbox col-sm-2">
                     <ul class="list-unstyled">
-                        <li><label> <input type="checkbox" value="aix" ng-model="design.isAix"/>AIX</label>
-                        <li><label> <input type="checkbox" value="aixvio" ng-model="design.isAixvio"/>AIX VIO</label>
+                        <li><label> <input type="checkbox" onclick="return false" value="aix" ng-model="design.isAix"/>AIX</label>
+                        <li><label> <input type="checkbox" onclick="return false" value="aixvio" ng-model="design.isAixvio"/>AIX VIO</label>
                     </ul>
                 </div>
                 <div class="checkbox col-sm-2">
                     <ul class="list-unstyled">
                         <li><label> <input type="checkbox" value="rhel" ng-model="design.isRhel"/>Redhat/SUSE</label>
-                        <li><label> <input type="checkbox" value="hpux" ng-model="design.isHpux"/>HP-UX</label>
+                        <li><label> <input type="checkbox" onclick="return false" value="hpux" ng-model="design.isHpux"/>HP-UX</label>
                     </ul>
                 </div>
 
                 <div class="checkbox col-sm-2">
                     <ul class="list-unstyled">
-                        <li><label> <input type="checkbox" value="vblock" ng-model="design.isVblock"/>VBlock/VxBlock</label>
-                        <li><label> <input type="checkbox" value="vblockImageServer" ng-model="design.isVblockImageServer"/>VBlock/VxBlock Image Servers</label>
+                        <li><label> <input type="checkbox" onclick="return false" value="vblock" ng-model="design.isVblock"/>VBlock/VxBlock</label>
+                        <li><label> <input type="checkbox" onclick="return false" value="vblockImageServer" ng-model="design.isVblockImageServer"/>VBlock/VxBlock Image Servers</label>
                     </ul>
                 </div>
             </div>

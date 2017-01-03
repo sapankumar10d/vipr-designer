@@ -10,7 +10,7 @@ angular.module('viprApp')
         }, function(response) {
             alert("Error finding designs.");
         });
-    }
+    };
     this.createDesign = function(design) {
         return $http.post("/designs", design).
         then(function(response) {
@@ -18,7 +18,7 @@ angular.module('viprApp')
         }, function(response) {
             alert("Error creating design.");
         });
-    }
+    };
     this.getDesign = function(designId) {
         var url = "/designs/" + designId;
         return $http.get(url).
@@ -27,10 +27,9 @@ angular.module('viprApp')
         }, function(response) {
             alert("Error finding this design.");
         });
-    }
+    };
     this.editDesign = function(design) {
         var url = "/designs/" + design._id;
-        //console.log(design._id);
         return $http.put(url, design).
         then(function(response) {
             return response;
@@ -38,7 +37,7 @@ angular.module('viprApp')
             alert("Error editing this design.");
             console.log(response);
         });
-    }
+    };
     this.deleteDesign = function(designId) {
         var url = "/designs/" + designId;
         return $http.delete(url).
@@ -48,5 +47,13 @@ angular.module('viprApp')
             alert("Error deleting this design.");
             console.log(response);
         });
-    }
-})
+    };
+    this.getEssm = function() {
+            return $http.get("/essm").
+            then(function(response) {
+                return response;
+            }, function(response) {
+                alert("Error finding essm!");
+            });
+    };
+});

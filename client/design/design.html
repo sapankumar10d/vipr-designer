@@ -185,7 +185,9 @@
                     <th>IP Address</th>
                     <th>UserID</th>
                     <th>Port</th>
-                    <th>Version</th>
+                    <th>Code Level</th>
+                    <th>SE/SMI-S</th>
+
                 </tr>
                 </thead>
                 <tbody>
@@ -196,7 +198,8 @@
                     <td>{{design.vmax2Smis.ip}}</td>
                     <td>{{design.vmax2Smis.user}}</td>
                     <td>{{design.vmax2Smis.port}}</td>
-                    <td>{{design.vmax2Smis.version}}</td>
+                    <td ng-class='{success: (essm.vmax2.microcode.indexOf(design.vmax2.code))!= -1, danger:(essm.vmax2.microcode.indexOf(design.vmax2.code))== -1}'>{{design.vmax2.code}}</td>
+                    <td ng-class='{success: (essm.vmax2.se.indexOf(design.vmax2.se))!= -1, danger:(essm.vmax2.se.indexOf(design.vmax2.se))== -1}'>{{design.vmax2.se}}</td>
                 </tr>
 
                 <tr ng-if="design.isVmax-3">
@@ -206,7 +209,8 @@
                     <td>{{design.vmax3Smis.ip}}</td>
                     <td>{{design.vmax3Smis.user}}</td>
                     <td>{{design.vmax3Smis.port}}</td>
-                    <td>{{design.vmax3Smis.version}}</td>
+                    <td ng-class='{success: (essm.vmax3.microcode.indexOf(design.vmax3.code))!= -1, danger:(essm.vmax3.microcode.indexOf(design.vmax3.code))== -1}'>{{design.vmax3.code}}</td>
+                    <td ng-class='{success: (essm.vmax3.se.indexOf(design.vmax3.se))!= -1, danger:(essm.vmax3.se.indexOf(design.vmax3.se))== -1}'>{{design.vmax3.se}}</td>
                 </tr>
 
                 <tr ng-if="design.isVnxBlock">
@@ -216,7 +220,8 @@
                     <td>{{design.vnxBlock.ip}}</td>
                     <td>{{design.vnxBlock.user}}</td>
                     <td>{{design.vnxBlock.port}}</td>
-                    <td>{{design.vnxBlock.version}}</td>
+                    <td ng-class='{success: (essm.vnxBlock.microcode.indexOf(design.vnxBlock.code))!= -1, danger:(essm.vnxBlock.microcode.indexOf(design.vnxBlock.code))== -1}'>{{design.vnxBlock.code}}</td>
+                    <td ng-class='{success: (essm.vnxBlock.se.indexOf(design.vnxBlock.se))!= -1, danger:(essm.vnxBlock.se.indexOf(design.vnxBlock.se))== -1}'>{{design.vnxBlock.se}}</td>
                 </tr>
 
                 <tr ng-if="design.isVplex">
@@ -226,7 +231,7 @@
                     <td>{{design.vplex.ip}}</td>
                     <td>{{design.vplex.user}}</td>
                     <td>{{design.vplex.port}}</td>
-                    <td>{{design.vplex.version}}</td>
+                    <td ng-class='{success: (essm.vplex.microcode.indexOf(design.vplex.code))!= -1, danger:(essm.vplex.microcode.indexOf(design.vplex.code))== -1}'>{{design.vplex.code}}</td>
                 </tr>
 
                 <tr ng-if="design.isRp">
@@ -236,7 +241,7 @@
                     <td>{{design.rp.ip}}</td>
                     <td>{{design.rp.user}}</td>
                     <td>{{design.rp.port}}</td>
-                    <td>{{design.rp.version}}</td>
+                    <td ng-class='{success: (essm.rp.microcode.indexOf(design.rp.code))!= -1, danger:(essm.rp.microcode.indexOf(design.rp.code))== -1}'>{{design.rp.code}}</td>
                 </tr>
                 </tbody>
             </table>
@@ -378,6 +383,7 @@
                 </tbody>
             </table>
         </div>
+
 
         <p>
             <button style="margin-top:20px" class="btn btn-default" ng-click="toggleEdit()">Edit</button>

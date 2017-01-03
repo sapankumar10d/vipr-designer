@@ -19,7 +19,13 @@ angular.module('viprApp', ['ui.router','ngMaterial', 'ui.bootstrap', 'auth0'])
               url: '/:designId',
               templateUrl: 'design/design.html',
               controller: 'editDesignCtrl',
-              data: { requiresLogin: true}
+              data: { requiresLogin: true},
+              resolve: {
+                  essm: function(dataService) {
+                      return dataService.getEssm();
+                  }
+              }
+
           })
           .state('newdesign', {
               url: '/newdesign/',
@@ -33,12 +39,7 @@ angular.module('viprApp', ['ui.router','ngMaterial', 'ui.bootstrap', 'auth0'])
                 templateUrl: 'login/login.html',
                 controller: 'loginCtrl'
             })
-            .state('essm', {
-                url:'/essm/',
-                templateUrl: 'essm/essm.html',
-                controller: 'essmCtrl',
-                data: {requiresLogin: true}
-            })
+
         $urlRouterProvider.otherwise('/');
 
         $locationProvider.hashPrefix('');

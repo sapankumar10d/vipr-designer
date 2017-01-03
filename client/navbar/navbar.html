@@ -6,7 +6,6 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-left">
                 <li ng-class="{active: activeTab === '/'}"><a ui-sref="/">Design</a></li>
-                <li ng-class="{active: activeTab === 'essm'}"><a ui-sref="essm">Support Matrix</a></li>
                 <li ng-if="!auth.isAuthenticated" ng-class="{active: activeTab === 'login'}"><a ui-sref="login">SignIn</a></li>
 
             </ul>

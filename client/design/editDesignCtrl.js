@@ -3,7 +3,7 @@
  */
 
 angular.module('viprApp')
-    .controller("editDesignCtrl", function($scope, $stateParams, dataService, $window) {
+    .controller("editDesignCtrl", function($scope, $stateParams, dataService, $window, essm) {
         dataService.getDesign($stateParams.designId).then(function(doc) {
             $scope.design = doc.data;
         }, function(response) {
@@ -31,4 +31,6 @@ angular.module('viprApp')
         $scope.deleteDesign = function(designId) {
             dataService.deleteDesign(designId);
         }
+
+        $scope.essm = essm.data;
     });
