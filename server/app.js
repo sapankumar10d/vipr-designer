@@ -15,9 +15,6 @@ app.use(express.static(__dirname + '/../client'));
 app.use(express.static(__dirname + '/../'));
 app.use(bodyParser.json());
 
-
-
-
 var db;
 // Connect to the database before starting the application server.
 mongodb.MongoClient.connect('mongodb://localhost:27017/viprDesigner', function (err, database) {
@@ -28,11 +25,12 @@ mongodb.MongoClient.connect('mongodb://localhost:27017/viprDesigner', function (
 
     // Save database object from the callback for reuse.
     db = database;
-    console.log("Database connection ready");
+    console.log("Mongodb database connection ready");
 
     // Initialize the app.
-    app.listen(8888, function(){
-        console.log( "App now listening on 8888" );
+    var PORT = 8888;
+    app.listen(PORT, function(){
+        console.log( "Server app listening on " + PORT );
 
     });
 });
@@ -43,15 +41,7 @@ function handleError(res, reason, message, code) {
     res.status(code || 500).json({"error": message});
 }
 
-app.get("/essm", function(req, res) {
-    db.collection(ESSM_COLLECTION).findOne({}, function(err, doc) {
-        if (err) {
-            handleError(res, err.message, "Failed to get Support Matrix !");
-        } else {
-            res.status(200).json(doc);
-        }
-    });
-});
+
 
 
 app.get("/designs", function(req, res) {
@@ -68,10 +58,9 @@ app.post("/designs", function(req, res) {
     var newDesign = req.body;
     newDesign.createDate = new Date();
 
-    if (!(req.body.customer.name || req.body.customer.email)) {
-        handleError(res, "Invalid user input", "Must provide a Name or email!", 400);
+    if (!(req.body.customer.accnt || req.body.customer.email)) {
+        handleError(res, "Invalid user input", "Must provide Customer Account Name or email!", 400);
     }
-
     db.collection(DESIGNS_COLLECTION).insertOne(newDesign, function(err, doc) {
         if (err) {
             handleError(res, err.message, "Failed to create new design!");
@@ -110,6 +99,16 @@ app.delete("/designs/:id", function(req, res) {
             handleError(res, err.message, "Failed to delete design");
         } else {
             res.status(204).end();
+        }
+    });
+});
+
+app.get("/essm", function(req, res) {
+    db.collection(ESSM_COLLECTION).findOne({}, function(err, doc) {
+        if (err) {
+            handleError(res, err.message, "Failed to get Support Matrix !");
+        } else {
+            res.status(200).json(doc);
         }
     });
 });
