@@ -5,9 +5,7 @@
         </h1>
     </div>
 
-    <div class="col-md-2">
-        <a ui-sref="/"><button  style="margin-top:20px" class="btn btn-danger pull-right" ng-click="deleteDesign(design._id)">Delete Design</button></a>
-    </div>
+
 
 </div>
 <div ng-hide="editMode" class="container" id="exportThis">
@@ -36,7 +34,7 @@
 
         <div style="clear:both"></div>
 
-        <div class="well">
+        <div class="well" ng-if="design.viprHa ||design.numberOfVdc ||design.vsphereVersion ||design.blockorFile">
             <legend>VDC Summary</legend>
             <table class="table table-condensed table-striped table-responsive table-bordered">
                 <thead>
@@ -60,7 +58,7 @@
             </table>
         </div>
 
-        <div class="well">
+        <div class="well" ng-if="design.viprHa">
             <legend>ViPR Infrastructure and Network Details</legend>
             <table class="table table-condensed table-striped table-responsive table-bordered">
                 <thead>
@@ -174,7 +172,39 @@
                 </tbody>
             </table>
         </div>
-        <div class="well">
+
+        <div class="panel panel-info" ng-if="design.vsphereVersion == '5.0' || design.vsphereVersion =='5.1'|| design.vsphereVersion =='5.5' || design.vsphereVersion =='6.0'">
+            <div class="panel-heading">Requirements for VMware vApp installation</div>
+            <div class="panel-body">
+            <ul>
+                <li>VMware vCenter Server running in the vSphere Enterprise Edition environment.</li>
+                <li>ViPR Controller deployment with a vApp requires administrative rights to the VMware Virtual Center.</li>
+                <li>An installed VMware ESXi server 6.0, 5.5.x, 5.1.x or 5.0.x running in the vSphere environment, and VMFS 5.</li>
+                <li>An installed vSphere Client from which you can access your vCenter Server.</li>
+                <li>DRS-enabled cluster or resource pool in a DRS-enabled cluster.</li>
+                <li>Datastore on shared block storage. Solid State Drive (SSD) or 10K RPM Fibre Channel forproduction environments. NL-SAS for non-production environments.</li>
+                <li>Read/write latency for ESXi datastores should average 10ms or less.</li>
+            </ul>
+            </div>
+        </div>
+
+        <div class="panel panel-info" ng-if="design.vsphereVersion == '2012R2'">
+            <div class="panel-heading">Requirements for Microsoft Hyper-V</div>
+            <div class="panel-body">
+                <ul>
+                    <li>Windows Hyper-V Server 2012 R21</li>
+                    <li>System Center 2012 R2 Virtual Machine Manager. The deployment PowerShell script Provided with the installation must run on this server.</li>
+                    <li>Administrative rights or permission rights to the Microsoft System Center VirtualMachine Manager (SCVMM).</li>
+                    <li>High speed network connection between SCVMM server and Hyper-V nodes.</li>
+                    <li>Enough memory to run ViPR Controller nodes.</li>
+                    <li>Solid State Drive (SSD) or 10K RPM Fibre Channel for production environments. NLSAS for non-production environments.</li>
+                    <li>Read/write latency for underlying drives should average 10 ms or less.</li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="well" ng-if="design.isVmax2 ||design.isVmax3||design.isVnxBlock ||design.isVplex ||design.isRp">
             <legend>Storage Infrastructure Details</legend>
             <table class="table table-condensed table-striped table-responsive table-bordered">
                 <thead>
@@ -191,7 +221,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-if="design.isVmax-2">
+                <tr ng-if="design.isVmax2">
                     <td>VMAX-2</td>
                     <td>{{design.vmax2Smis.viprName}}</td>
                     <td>{{design.vmax2Smis.host}}</td>
@@ -202,7 +232,7 @@
                     <td ng-class='{success: (essm.vmax2.se.indexOf(design.vmax2.se))!= -1, danger:(essm.vmax2.se.indexOf(design.vmax2.se))== -1}'>{{design.vmax2.se}}</td>
                 </tr>
 
-                <tr ng-if="design.isVmax-3">
+                <tr ng-if="design.isVmax3">
                     <td>VMAX-3</td>
                     <td>{{design.vmax3Smis.viprName}}</td>
                     <td>{{design.vmax3Smis.host}}</td>
@@ -246,7 +276,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="well">
+        <div class="well" ng-if="design.isCisco ||design.isBrocade">
             <legend>SAN Fabric Details</legend>
             <table class="table table-condensed table-striped table-responsive table-bordered">
                 <thead>
@@ -284,7 +314,7 @@
             </table>
 
         </div>
-        <div class="well">
+        <div class="well" ng-if="design.isVcenter ||design.isWindows">
             <legend>Hosts/Clusters Details</legend>
             <table class="table table-condensed table-striped table-responsive table-bordered">
                 <thead>
@@ -332,7 +362,7 @@
             </table>
         </div>
 
-        <div class="well">
+        <div class="well" ng-if="design.isVroPlugin ||design.isVrosPlugin || design.isVasa">
         <legend>External Plugin Details</legend>
         <table class="table table-condensed table-striped table-responsive table-bordered">
             <thead>
@@ -362,7 +392,7 @@
         </table>
     </div>
 
-        <div ng-if="!design.isNone" class="well">
+        <div ng-if="!design.isNone && (design.isNorthBound||design.isSouthBound)" class="well">
             <legend>Open Stack Integration</legend>
             <table  class="table table-condensed table-striped table-responsive table-bordered">
                 <thead>
@@ -388,7 +418,10 @@
         <p>
             <button style="margin-top:20px" class="btn btn-default" ng-click="toggleEdit()">Edit</button>
             <a style="margin-top:20px" class="btn btn-default" ui-sref="/">Back</a>
+            <a ui-sref="/"><button  style="margin-top:20px" class="btn btn-danger " ng-click="deleteDesign(design._id)">Delete Design</button></a>
+
         </p>
+
     </div>
 </div>
 <!-- Contact form -->

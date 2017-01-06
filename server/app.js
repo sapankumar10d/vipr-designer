@@ -58,8 +58,8 @@ app.post("/designs", function(req, res) {
     var newDesign = req.body;
     newDesign.createDate = new Date();
 
-    if (!(req.body.customer.accnt || req.body.customer.email)) {
-        handleError(res, "Invalid user input", "Must provide Customer Account Name or email!", 400);
+    if (!( req.body.dellEmc.saName && req.body.customer.accnt && req.body.customer.email && req.body.customer.name && req.body.customer.contact)) {
+        handleError(res, "Invalid user input", "Must provide SA Name and Full Customer info", 400);
     }
     db.collection(DESIGNS_COLLECTION).insertOne(newDesign, function(err, doc) {
         if (err) {

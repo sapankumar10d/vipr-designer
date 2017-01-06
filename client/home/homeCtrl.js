@@ -6,6 +6,7 @@ angular.module('viprApp')
         $scope.designs = designs.data;
         $scope.auth = auth;
 
+
         $scope.deleteDesign = function(designId) {
             dataService.deleteDesign(designId);
 
