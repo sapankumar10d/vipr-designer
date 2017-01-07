@@ -1,14 +1,13 @@
 <div class = "container">
-    <div  ng-if="$first"  class="col-md-6 alert alert-info" ng-repeat="des in dess=(designs | filter: des.dellEmc.saEmail = auth.profile.email)">
+    <div  ng-if="$first"  class="col-md-9 alert alert-info" ng-repeat="des in dess=(designs | filter: des.dellEmc.saEmail = auth.profile.email)">
             <h4> Welcome {{des.dellEmc.saName}}, Your Designs:</h4>
     </div>
 
-    <div  ng-show="!dess.length" class="col-md-6 alert alert-danger">
+    <div  ng-show="!dess.length" class="col-md-9 alert alert-danger">
         <h4>You don't have any designs stored!</h4>
     </div>
 
-    <div class="col-md-3">
-    </div>
+
     <div class="col-md-3">
         <a   class="btn btn-primary pull-right" ui-sref="newdesign">Start New Design</a>
     </div>
