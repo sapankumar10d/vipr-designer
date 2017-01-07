@@ -7,7 +7,6 @@
             <ul class="nav navbar-nav navbar-left">
                 <li ng-class="{active: activeTab === '/'}"><a ui-sref="/">Home</a></li>
                 <li ng-if="!auth.isAuthenticated" ng-class="{active: activeTab === 'login'}"><a ui-sref="login">SignIn</a></li>
-
             </ul>
             <div class="navbar-right" >
             <label class="navbar-text pull-left">{{auth.profile.email}}</label>
@@ -16,3 +15,4 @@
         </div>
     </div>
 </nav>
+
