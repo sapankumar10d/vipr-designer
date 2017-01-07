@@ -13,8 +13,8 @@
         <div style="float:left; width: 48%" class="well">
             <legend>Created For:</legend>
             <p ng-if="design.customer.name">{{design.customer.name}}, {{design.customer.role}}</p>
-            <p ng-if="design.customer.email"><a ng-href="mailto:{{ design.customer.email }}" target="_blank">{{design.customer.email}}</a>, {{design.customer.contact}}</p>
-
+            <p ng-if="design.customer.email"><a ng-href="mailto:{{ design.customer.email }}" >{{design.customer.email}}</a>, {{design.customer.contact}}</p>
+            <hr>
             <p ng-if="design.customer.accnt">{{design.customer.accnt}}, </p>
             <p ng-if="design.customer.address">{{ design.customer.address }} </p>
             <p>Site ID: {{design.customer.siteid}}</p>

@@ -4,22 +4,24 @@
     </div>
 </div>
 
-<form class="form-horizontal" role="form">
+<form class="form-horizontal" role="form" name="designForm" ng-submit="saveDesign(design, designForm.$valid)" novalidate>
     <div class="container well">
         <div style="float:left; width: 48%" class="container">
             <fieldset>
                 <legend >Dell EMC Details</legend>
 
-                <div class="form-group">
+                <div class="form-group" ng-class="{ 'has-error': designForm.saName.$invalid && !designForm.saName.$pristine}">
                     <label class="col-sm-4 control-label">SA Name</label>
                     <div class="col-sm-8">
-                        <input  class="form-control" type="text" ng-model="design.dellEmc.saName" placeholder="*required field*" required>
+                        <input  class="form-control"  type="text" name="saName" ng-model="design.dellEmc.saName" placeholder="*required field*" required>
+                        <p ng-show="designForm.saName.$invalid && !designForm.saName.$pristine" class="help-block">SA name is required!</p>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" ng-class="{ 'has-error' : designForm.saEmail.$invalid && !designForm.saEmail.$pristine }">
                     <label class="col-sm-4 control-label">SA Email</label>
                     <div class="col-sm-8">
-                        <input  class="form-control" type="text" ng-model="design.dellEmc.saEmail" ng-init="design.dellEmc.saEmail=auth.profile.email" required>
+                        <input  class="form-control"  name="saEmail" type="email" ng-model="design.dellEmc.saEmail" ng-init="design.dellEmc.saEmail=auth.profile.email" required>
+                        <p ng-show="designForm.saEmail.$invalid && !designForm.saEmail.$pristine" class="help-block">Not a valid email!</p>
                     </div>
                 </div>
                 <div class="form-group">
@@ -49,7 +51,7 @@
                 <div class="form-group">
                     <label class="col-sm-4 control-label">Dell EMC Address</label>
                     <div class="col-sm-8">
-                        <input  class="form-control" type="text-area" ng-model="design.dellEmc.address" >
+                        <input  class="form-control" type="text" ng-model="design.dellEmc.address" >
                     </div>
                 </div>
                 </legend>
@@ -63,46 +65,50 @@
                 <legend>Customer Details</legend>
 
 
-                <div class="form-group">
+                <div class="form-group" ng-class="{ 'has-error': designForm.customerAccnt.$invalid && !designForm.customerAccnt.$pristine}">
                     <label class="col-sm-4 control-label">Company Name</label>
                     <div class="col-sm-8">
-                        <input  class="form-control" type="text-area" ng-model="design.customer.accnt" placeholder="*required field*" required>
+                        <input   name="customerAccnt" class="form-control" type="text" ng-model="design.customer.accnt" required placeholder="*required field*" >
+                        <p ng-show="designForm.customerAccnt.$invalid && !designForm.customerAccnt.$pristine" class="help-block">This field is required!</p>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-4 control-label">Site ID</label>
                     <div class="col-sm-8">
-                        <input  class="form-control" type="text-area" ng-model="design.customer.siteid" required>
+                        <input  class="form-control" type="text" ng-model="design.customer.siteid">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-4 control-label">Site Address</label>
                     <div class="col-sm-8">
-                        <input  class="form-control" type="text-area" ng-model="design.customer.address" required>
+                        <input  class="form-control" type="text" ng-model="design.customer.address" >
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" ng-class="{ 'has-error': designForm.customerName.$invalid && !designForm.customerName.$pristine}">
                     <label class="col-sm-4 control-label">Customer Name</label>
                     <div class="col-sm-8">
-                        <input  class="form-control" type="text-area" ng-model="design.customer.name"  placeholder="*required field*" required>
+                        <input  name="customerName" class="form-control" type="text" ng-model="design.customer.name"  required placeholder="*required field*" >
+                        <p ng-show="designForm.customerName.$invalid && !designForm.customerName.$pristine" class="help-block">This field is required!</p>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" ng-class="{ 'has-error': designForm.customerEmail.$invalid && !designForm.customerEmail.$pristine}">
                     <label class="col-sm-4 control-label">Customer Email</label>
                     <div class="col-sm-8">
-                        <input  class="form-control" type="text-area" ng-model="design.customer.email"  placeholder="*required field*" required>
+                        <input  name="customerEmail" class="form-control" type="email" ng-model="design.customer.email"  required placeholder="*required field*">
+                        <p ng-show="designForm.customerEmail.$invalid && !designForm.customerEmail.$pristine" class="help-block">This is not a valid email!</p>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" ng-class="{ 'has-error': designForm.customerContact.$invalid && !designForm.customerContact.$pristine}">
                     <label class="col-sm-4 control-label">Customer Contact</label>
                     <div class="col-sm-8">
-                        <input  class="form-control" type="text-area" ng-model="design.customer.contact"  placeholder="*required field*" required>
+                        <input  name="customerContact" class="form-control" type="tel" ng-model="design.customer.contact" required placeholder="*required field*">
+                        <p ng-show="designForm.customerContact.$invalid && !designForm.customerContact.$pristine" class="help-block">This field is required!</p>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-4 control-label">Customer Role</label>
                     <div class="col-sm-8">
-                        <input  class="form-control" type="text-area" ng-model="design.customer.role" required placeholder="IT Manager">
+                        <input  class="form-control" type="text" ng-model="design.customer.role" placeholder="IT Manager">
                     </div>
                 </div>
                 </legend>
@@ -181,44 +187,44 @@
             <legend>ViPR Infrastructure and Network Requirements</legend>
                 <p class="col-sm-2">
                     <label class="control-label"> Hostname</label>
-                    <input  class="form-control" type="text" ng-model="design.virtual.host" required placeholder="Virtual Hostname">
-                    <input  class="form-control" type="text" ng-model="design.node1.host" required placeholder="Node 1 Hostname">
-                    <input  class="form-control" type="text" ng-model="design.node2.host" required placeholder="Node 2 Hostname">
-                    <input  class="form-control" type="text" ng-model="design.node3.host" required placeholder="Node 3 Hostname">
-                    <input ng-if="design.viprHa == '3plus2'" class="form-control" type="text" ng-model="design.node4.host" required placeholder="Node 4 Hostname">
-                    <input ng-if="design.viprHa == '3plus2'"class="form-control" type="text" ng-model="design.node5.host" required placeholder="Node 5 Hostname">
+                    <input  class="form-control" type="text" ng-model="design.virtual.host"  placeholder="Virtual Hostname">
+                    <input  class="form-control" type="text" ng-model="design.node1.host"  placeholder="Node 1 Hostname">
+                    <input  class="form-control" type="text" ng-model="design.node2.host"  placeholder="Node 2 Hostname">
+                    <input  class="form-control" type="text" ng-model="design.node3.host"  placeholder="Node 3 Hostname">
+                    <input ng-if="design.viprHa == '3plus2'" class="form-control" type="text" ng-model="design.node4.host"  placeholder="Node 4 Hostname">
+                    <input ng-if="design.viprHa == '3plus2'"class="form-control" type="text" ng-model="design.node5.host"  placeholder="Node 5 Hostname">
                 </p>
 
                 <p class="col-sm-2">
                     <label class="control-label"> IP Address</label>
-                    <input  class="form-control" type="text" ng-model="design.virtual.ip" required placeholder="Virtual IP">
-                    <input  class="form-control" type="text" ng-model="design.node1.ip" required placeholder="Node 1 IP">
-                    <input  class="form-control" type="text" ng-model="design.node2.ip" required placeholder="Node 2 IP">
-                    <input  class="form-control" type="text" ng-model="design.node3.ip" required placeholder="Node 3 IP">
-                    <input ng-if="design.viprHa == '3plus2'" class="form-control" type="text" ng-model="design.node4.ip" required placeholder="Node 4 IP">
-                    <input ng-if="design.viprHa == '3plus2'" class="form-control" type="text" ng-model="design.node5.ip" required placeholder="Node 5 IP">
+                    <input  class="form-control" type="text" ng-model="design.virtual.ip"  placeholder="Virtual IP">
+                    <input  class="form-control" type="text" ng-model="design.node1.ip"  placeholder="Node 1 IP">
+                    <input  class="form-control" type="text" ng-model="design.node2.ip"  placeholder="Node 2 IP">
+                    <input  class="form-control" type="text" ng-model="design.node3.ip"  placeholder="Node 3 IP">
+                    <input ng-if="design.viprHa == '3plus2'" class="form-control" type="text" ng-model="design.node4.ip"  placeholder="Node 4 IP">
+                    <input ng-if="design.viprHa == '3plus2'" class="form-control" type="text" ng-model="design.node5.ip"  placeholder="Node 5 IP">
                 </p>
 
                 <p class="col-sm-2">
                     <label class="control-label"> Netmask</label>
-                    <input  class="form-control" type="text" ng-model="design.network.mask" required placeholder="Netmask">
+                    <input  class="form-control" type="text" ng-model="design.network.mask"  placeholder="Netmask">
                 </p>
 
                 <p class="col-sm-2">
                     <label class="control-label"> Gateway</label>
-                    <input  class="form-control" type="text" ng-model="design.network.gateway" required placeholder="Gateway">
+                    <input  class="form-control" type="text" ng-model="design.network.gateway"  placeholder="Gateway">
                 </p>
 
                 <p class="col-sm-2">
                     <label class="control-label"> DNS </label>
-                    <input  class="form-control" type="text" ng-model="design.network.dns1" required placeholder="DNS 1">
-                    <input  class="form-control" type="text" ng-model="design.network.dns2" required placeholder="DNS 2">
+                    <input  class="form-control" type="text" ng-model="design.network.dns1"  placeholder="DNS 1">
+                    <input  class="form-control" type="text" ng-model="design.network.dns2"  placeholder="DNS 2">
                 </p>
 
                 <p class="col-sm-2">
                     <label class="control-label"> NTP</label>
-                    <input  class="form-control" type="text" ng-model="design.network.ntp1" required placeholder="NTP 1">
-                    <input  class="form-control" type="text" ng-model="design.network.ntp2" required placeholder="NTP 2">
+                    <input  class="form-control" type="text" ng-model="design.network.ntp1"  placeholder="NTP 1">
+                    <input  class="form-control" type="text" ng-model="design.network.ntp2"  placeholder="NTP 2">
                 </p>
             </div>
 
@@ -289,22 +295,22 @@
 
             <div class="container"  ng-if="design.isVmax2">
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.vmax2Smis.viprName" required placeholder="VMAX-2 SMIS ViPR Name">
+                    <input  class="form-control" type="text" ng-model="design.vmax2Smis.viprName"  placeholder="VMAX-2 SMIS ViPR Name">
                 </p>
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.vmax2Smis.host" required placeholder="VMAX-2 SMIS Hostname">
+                    <input  class="form-control" type="text" ng-model="design.vmax2Smis.host"  placeholder="VMAX-2 SMIS Hostname">
                 </p>
 
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.vmax2Smis.ip" required placeholder="VMAX-2 SMIS IP Address">
+                    <input  class="form-control" type="text" ng-model="design.vmax2Smis.ip"  placeholder="VMAX-2 SMIS IP Address">
                 </p>
 
                 <p class="col-sm-1">
-                    <input  class="form-control" type="text" ng-model="design.vmax2Smis.user" required placeholder="admin">
+                    <input  class="form-control" type="text" ng-model="design.vmax2Smis.user"  placeholder="admin">
                 </p>
 
                 <p class="col-sm-1">
-                    <input class="form-control" type="text" ng-model="design.vmax2Smis.port" required placeholder="5988/5989">
+                    <input class="form-control" type="text" ng-model="design.vmax2Smis.port"  placeholder="5988/5989">
                 </p>
 
                 <p class="col-sm-2">
@@ -327,20 +333,20 @@
 
             <div class="container"  ng-if="design.isVmax3">
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.vmax3Smis.viprName" required placeholder="VMAX-3 SMIS ViPR Name">
+                    <input  class="form-control" type="text" ng-model="design.vmax3Smis.viprName"  placeholder="VMAX-3 SMIS ViPR Name">
                 </p>
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.vmax3Smis.host" required placeholder="VMAX-3 SMIS Hostname">
+                    <input  class="form-control" type="text" ng-model="design.vmax3Smis.host"  placeholder="VMAX-3 SMIS Hostname">
                 </p>
 
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.vmax3Smis.ip" required placeholder="VMAX-3 SMIS IP Address">
+                    <input  class="form-control" type="text" ng-model="design.vmax3Smis.ip"  placeholder="VMAX-3 SMIS IP Address">
                 </p>
                 <p class="col-sm-1">
-                    <input class="form-control" type="text" ng-model="design.vmax3Smis.user" required placeholder="admin">
+                    <input class="form-control" type="text" ng-model="design.vmax3Smis.user"  placeholder="admin">
                 </p>
                 <p class="col-sm-1">
-                    <input  class="form-control" type="text" ng-model="design.vmax3Smis.port" required placeholder="5988/5989">
+                    <input  class="form-control" type="text" ng-model="design.vmax3Smis.port"  placeholder="5988/5989">
                 </p>
                 <p class="col-sm-2">
                     <select  class="form-control" ng-model="design.vmax3.code" >
@@ -362,20 +368,20 @@
 
             <div class="container"  ng-if="design.isVnxBlock">
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.vnxBlock.viprName" required placeholder="VNX-Block SMIS ViPR Name">
+                    <input  class="form-control" type="text" ng-model="design.vnxBlock.viprName"  placeholder="VNX-Block SMIS ViPR Name">
                 </p>
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.vnxBlock.host" required placeholder="VNX-Block SMIS Hostname">
+                    <input  class="form-control" type="text" ng-model="design.vnxBlock.host"  placeholder="VNX-Block SMIS Hostname">
                 </p>
 
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.vnxBlock.ip" required placeholder="VNX-Block SMIS IP Address">
+                    <input  class="form-control" type="text" ng-model="design.vnxBlock.ip"  placeholder="VNX-Block SMIS IP Address">
                 </p>
                 <p class="col-sm-1">
-                    <input  class="form-control" type="text" ng-model="design.vnxBlock.user" required placeholder="admin">
+                    <input  class="form-control" type="text" ng-model="design.vnxBlock.user"  placeholder="admin">
                 </p>
                 <p class="col-sm-1">
-                    <input  class="form-control" type="text" ng-model="design.vnxBlock.port" required placeholder="5988/5989">
+                    <input  class="form-control" type="text" ng-model="design.vnxBlock.port"  placeholder="5988/5989">
                 </p>
                 <p class="col-sm-2">
                     <select  class="form-control" ng-model="design.vnxBlock.code" >
@@ -395,19 +401,19 @@
 
             <div class="container"  ng-if="design.isVplex">
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.vplex.viprName" required placeholder="VPLEX ViPR Name">
+                    <input  class="form-control" type="text" ng-model="design.vplex.viprName"  placeholder="VPLEX ViPR Name">
                 </p>
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.vplex.host" required placeholder="VPLEX Mgmt Hostname">
+                    <input  class="form-control" type="text" ng-model="design.vplex.host"  placeholder="VPLEX Mgmt Hostname">
                 </p>
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.vplex.ip" required placeholder="VPLEX Mgmt IP Address">
+                    <input  class="form-control" type="text" ng-model="design.vplex.ip"  placeholder="VPLEX Mgmt IP Address">
                 </p>
                 <p class="col-sm-1">
-                    <input  class="form-control" type="text" ng-model="design.vplex.user" required placeholder="service">
+                    <input  class="form-control" type="text" ng-model="design.vplex.user"  placeholder="service">
                 </p>
                 <p class="col-sm-1">
-                    <input  class="form-control" type="text" ng-model="design.vplex.port" required placeholder="443">
+                    <input  class="form-control" type="text" ng-model="design.vplex.port"  placeholder="443">
                 </p>
                 <p class="col-sm-2">
                     <select  class="form-control" ng-model="design.vplex.code" >
@@ -421,20 +427,20 @@
 
             <div class="container"  ng-if="design.isRp">
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.rp.viprName" required placeholder="RP ViPR Name">
+                    <input  class="form-control" type="text" ng-model="design.rp.viprName"  placeholder="RP ViPR Name">
                 </p>
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.rp.host" required placeholder="RP Mgmt Hostname">
+                    <input  class="form-control" type="text" ng-model="design.rp.host"  placeholder="RP Mgmt Hostname">
                 </p>
 
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.rp.ip" required placeholder="RP Mgmt IP Address">
+                    <input  class="form-control" type="text" ng-model="design.rp.ip"  placeholder="RP Mgmt IP Address">
                 </p>
                 <p class="col-sm-1">
-                    <input  class="form-control" type="text" ng-model="design.rp.user" required placeholder="admin">
+                    <input  class="form-control" type="text" ng-model="design.rp.user"  placeholder="admin">
                 </p>
                 <p class="col-sm-1">
-                    <input  class="form-control" type="text" ng-model="design.rp.port" required placeholder="7225">
+                    <input  class="form-control" type="text" ng-model="design.rp.port"  placeholder="7225">
                 </p>
                 <p class="col-sm-2">
                     <select  class="form-control" ng-model="design.rp.code" >
@@ -498,45 +504,45 @@
 
             <div class="container"  ng-if="design.isCisco">
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.cisco.viprName" required placeholder="Cisco ViPR Name">
+                    <input  class="form-control" type="text" ng-model="design.cisco.viprName"  placeholder="Cisco ViPR Name">
                 </p>
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.cisco.host" required placeholder="Cisco Mgmt Hostname">
+                    <input  class="form-control" type="text" ng-model="design.cisco.host"  placeholder="Cisco Mgmt Hostname">
                 </p>
 
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.cisco.ip" required placeholder="Cisco Mgmt IP Address">
+                    <input  class="form-control" type="text" ng-model="design.cisco.ip"  placeholder="Cisco Mgmt IP Address">
                 </p>
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.cisco.user" required placeholder="Cisco User">
+                    <input  class="form-control" type="text" ng-model="design.cisco.user"  placeholder="Cisco User">
                 </p>
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.cisco.port" required placeholder="Cisco Mgmt Port">
+                    <input  class="form-control" type="text" ng-model="design.cisco.port"  placeholder="Cisco Mgmt Port">
                 </p>
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.cisco.version" required placeholder="Cisco Version">
+                    <input  class="form-control" type="text" ng-model="design.cisco.version"  placeholder="Cisco Version">
                 </p>
             </div>
 
             <div class="container"  ng-if="design.isBrocade">
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.brocade.viprName" required placeholder="Brocade ViPR Name">
+                    <input  class="form-control" type="text" ng-model="design.brocade.viprName"  placeholder="Brocade ViPR Name">
                 </p>
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.brocade.host" required placeholder="Brocade Mgmt Hostname">
+                    <input  class="form-control" type="text" ng-model="design.brocade.host"  placeholder="Brocade Mgmt Hostname">
                 </p>
 
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.brocade.ip" required placeholder="Brocade Mgmt IP Address">
+                    <input  class="form-control" type="text" ng-model="design.brocade.ip"  placeholder="Brocade Mgmt IP Address">
                 </p>
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.brocade.user" required placeholder="Brocade User">
+                    <input  class="form-control" type="text" ng-model="design.brocade.user"  placeholder="Brocade User">
                 </p>
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.brocade.port" required placeholder="5988/5989">
+                    <input  class="form-control" type="text" ng-model="design.brocade.port"  placeholder="5988/5989">
                 </p>
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.brocade.version" required placeholder="Brocade Version">
+                    <input  class="form-control" type="text" ng-model="design.brocade.version"  placeholder="Brocade Version">
                 </p>
             </div>
             </div>
@@ -609,65 +615,65 @@
 
             <div class="container"  ng-if="design.isVcenter">
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.vcenter.viprName" required placeholder="vCenter ViPR Name">
+                    <input  class="form-control" type="text" ng-model="design.vcenter.viprName"  placeholder="vCenter ViPR Name">
                 </p>
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.vcenter.host" required placeholder="vCenter Mgmt Hostname">
+                    <input  class="form-control" type="text" ng-model="design.vcenter.host"  placeholder="vCenter Mgmt Hostname">
                 </p>
 
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.vcenter.ip" required placeholder="vCenter Mgmt IP Address">
+                    <input  class="form-control" type="text" ng-model="design.vcenter.ip"  placeholder="vCenter Mgmt IP Address">
                 </p>
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.vcenter.user" required placeholder="vCenter User">
+                    <input  class="form-control" type="text" ng-model="design.vcenter.user"  placeholder="vCenter User">
                 </p>
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.vcenter.port" required placeholder="443">
+                    <input  class="form-control" type="text" ng-model="design.vcenter.port"  placeholder="443">
                 </p>
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.vcenter.version" required placeholder="vCenter Version">
+                    <input  class="form-control" type="text" ng-model="design.vcenter.version"  placeholder="vCenter Version">
                 </p>
             </div>
             <div class="container"  ng-if="design.isWindows">
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.windows.viprName" required placeholder="Windows ViPR Name">
+                    <input  class="form-control" type="text" ng-model="design.windows.viprName"  placeholder="Windows ViPR Name">
                 </p>
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.windows.host" required placeholder="Windows Mgmt Hostname">
+                    <input  class="form-control" type="text" ng-model="design.windows.host"  placeholder="Windows Mgmt Hostname">
                 </p>
 
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.windows.ip" required placeholder="Windows Mgmt IP Address">
+                    <input  class="form-control" type="text" ng-model="design.windows.ip"  placeholder="Windows Mgmt IP Address">
                 </p>
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.windows.user" required placeholder="Windows User">
+                    <input  class="form-control" type="text" ng-model="design.windows.user"  placeholder="Windows User">
                 </p>
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.windows.port" required placeholder="5985/5986">
+                    <input  class="form-control" type="text" ng-model="design.windows.port"  placeholder="5985/5986">
                 </p>
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.windows.version" required placeholder="Windows Version">
+                    <input  class="form-control" type="text" ng-model="design.windows.version"  placeholder="Windows Version">
                 </p>
             </div>
             <div class="container"  ng-if="design.isRhel">
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.rhel.viprName" required placeholder="Rhel ViPR Name">
+                    <input  class="form-control" type="text" ng-model="design.rhel.viprName"  placeholder="Rhel ViPR Name">
                 </p>
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.rhel.host" required placeholder="Rhel Mgmt Hostname">
+                    <input  class="form-control" type="text" ng-model="design.rhel.host"  placeholder="Rhel Mgmt Hostname">
                 </p>
 
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.rhel.ip" required placeholder="Rhel Mgmt IP Address">
+                    <input  class="form-control" type="text" ng-model="design.rhel.ip"  placeholder="Rhel Mgmt IP Address">
                 </p>
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.rhel.user" required placeholder="Rhel User">
+                    <input  class="form-control" type="text" ng-model="design.rhel.user"  placeholder="Rhel User">
                 </p>
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.rhel.port" required placeholder="22">
+                    <input  class="form-control" type="text" ng-model="design.rhel.port"  placeholder="22">
                 </p>
                 <p class="col-sm-2">
-                    <input  class="form-control" type="text" ng-model="design.rhel.version" required placeholder="Rhel Version">
+                    <input  class="form-control" type="text" ng-model="design.rhel.version"  placeholder="Rhel Version">
                 </p>
             </div>
             </div>
@@ -728,8 +734,9 @@
 
     <div>
         <p>
-            <button style="margin-top:20px" class="btn btn-default" ng-click="saveDesign(design)">Save</button>
-            <button style="margin-top:20px" class="btn btn-default" ng-click="back()">Back</button>
+            <button  class="btn btn-default" ng-click="saveDesign(design)">Save</button>
+            <button type="submit" class="btn btn-primary" ng-disabled="designForm.$invalid">Submit</button>
+            <button  class="btn btn-default" ng-click="back()">Back</button>
         </p>
     </div>
 
