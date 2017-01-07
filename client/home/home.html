@@ -31,7 +31,7 @@
                 <a ui-sref="designDetail({designId: design._id})">{{ design.customer.accnt }}</a>
             </td>
             <td> {{ design.customer.name}}</td>
-            <td> {{ design.customer.email}}</td>
+            <td> <a ng-href="mailto:{{ design.customer.email }}" target="_blank">{{ design.customer.email}}</a></td>
             <td> {{ design.customer.contact}}</td>
             <td> {{ design.createDate| date:'dd-MMM-yyyy' }}</td>
 
